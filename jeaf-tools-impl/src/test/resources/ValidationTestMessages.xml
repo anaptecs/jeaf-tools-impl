@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE Root PUBLIC "MessageData" "MessageData.dtd">
+<Root>
+	<ClassInfo className="ValidationTestMessages"
+		package="com.anaptecs.jeaf.tools.test.impl.validation"
+		description="Class contains all generated constants for messages used by the mail service provider."
+		author="JEAF Development Team" 
+		version="JEAF Release 1.3" />
+		
+	<MessageFolder name="ValidationTestMessage" idRangeBegin="199920" idRangeEnd="199929">
+
+			<Message messageID="199920" name="TEST_VALIDATION_MESSAGE" type="ERROR" traceLevel="ERROR"
+				defaultText="{0} request validation(s) failed. Please check specific messages for further details."
+				description="Exceptions with this error code are thrown if constraint checks for the parameters of a request fail." />
+
+	</MessageFolder>
+</Root>

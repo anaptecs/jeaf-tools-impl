@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <account/>
+  <account_person_link/>
+  <aonebo/>
+  <authorization OID="0#####0####X#" CLASS_ID="105" VERSION="0" START="2007-01-01 00:00:00.0" END="2050-12-31 00:00:00.0" AUTHORIZATIONTYPE_OID="0#####0####Y#" OWNINGROLE_OID="0#####0####W#"/>
+  <authorization OID="1#####0####X#" CLASS_ID="105" VERSION="0" START="2007-01-01 00:00:00.0" END="2050-12-31 00:00:00.0" AUTHORIZATIONTYPE_OID="1#####0####Y#" OWNINGROLE_OID="1#####0####W#"/>
+  <authorization OID="2#####0####X#" CLASS_ID="105" VERSION="0" START="2007-01-01 00:00:00.0" END="2050-12-31 00:00:00.0" AUTHORIZATIONTYPE_OID="2#####0####Y#" OWNINGROLE_OID="2#####0####W#"/>
+  <authorization OID="3#####0####X#" CLASS_ID="105" VERSION="0" START="2007-01-01 00:00:00.0" END="2050-12-31 00:00:00.0" AUTHORIZATIONTYPE_OID="3#####0####Y#" OWNINGROLE_OID="3#####0####W#"/>
+  <authorization OID="4#####0####X#" CLASS_ID="105" VERSION="0" START="2007-01-01 00:00:00.0" END="2050-12-31 00:00:00.0" AUTHORIZATIONTYPE_OID="4#####0####Y#" OWNINGROLE_OID="4#####0####W#"/>
+  <authorization_type OID="0#####0####Y#" CLASS_ID="106" VERSION="1" NAME="checkCurrentUser.com.anaptecs.jeaf.junit.JEAFSecurityTestService"/>
+  <authorization_type OID="1#####0####Y#" CLASS_ID="106" VERSION="1" NAME="checkCurrentAnonymousUser.com.anaptecs.jeaf.junit.JEAFSecurityTestService"/>
+  <authorization_type OID="2#####0####Y#" CLASS_ID="106" VERSION="1" NAME="getAllAvailableServices.com.anaptecs.jeaf.services.systemmanagement.SystemManagementService"/>
+  <authorization_type OID="3#####0####Y#" CLASS_ID="106" VERSION="1" NAME="checkService.com.anaptecs.jeaf.services.systemmanagement.SystemManagementService"/>
+  <authorization_type OID="4#####0####Y#" CLASS_ID="106" VERSION="1" NAME="getAllActiveComponents.com.anaptecs.jeaf.services.systemmanagement.SystemManagementService"/>
+  <authorizationcheckalgorithmbo/>
+  <bank/>
+  <base_class/>
+  <bonebo/>
+  <bookingbo/>
+  <c_many/>
+  <classa_bo/>
+  <classb_bo/>
+  <customerbo/>
+  <employee_customer_link/>
+  <employeebo/>
+  <execution_result/>
+  <execution_strategy/>
+  <jeaf_address/>
+  <jeaf_address_subtype OID="1#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Private Address" PARENTTYPE_OID="1#####0#####63#"/>
+  <jeaf_address_subtype OID="2#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Company Address" PARENTTYPE_OID="1#####0#####63#"/>
+  <jeaf_address_subtype OID="3#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Shipping Address" PARENTTYPE_OID="1#####0#####63#"/>
+  <jeaf_address_subtype OID="4#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Other" PARENTTYPE_OID="1#####0#####63#"/>
+  <jeaf_address_subtype OID="5#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Private" PARENTTYPE_OID="2#####0#####63#"/>
+  <jeaf_address_subtype OID="6#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Mobile" PARENTTYPE_OID="2#####0#####63#"/>
+  <jeaf_address_subtype OID="7#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Work" PARENTTYPE_OID="2#####0#####63#"/>
+  <jeaf_address_subtype OID="8#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Other" PARENTTYPE_OID="2#####0#####63#"/>
+  <jeaf_address_subtype OID="9#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Private" PARENTTYPE_OID="3#####0#####63#"/>
+  <jeaf_address_subtype OID="A#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Work" PARENTTYPE_OID="3#####0#####63#"/>
+  <jeaf_address_subtype OID="B#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Other" PARENTTYPE_OID="3#####0#####63#"/>
+  <jeaf_address_subtype OID="C#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Private" PARENTTYPE_OID="4#####0#####63#"/>
+  <jeaf_address_subtype OID="D#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Work" PARENTTYPE_OID="4#####0#####63#"/>
+  <jeaf_address_subtype OID="E#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Other" PARENTTYPE_OID="4#####0#####63#"/>
+  <jeaf_address_subtype OID="F#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Skype" PARENTTYPE_OID="5#####0#####63#"/>
+  <jeaf_address_subtype OID="G#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Private" PARENTTYPE_OID="6#####0#####63#"/>
+  <jeaf_address_subtype OID="H#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Company" PARENTTYPE_OID="6#####0#####63#"/>
+  <jeaf_address_subtype OID="I#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Other" PARENTTYPE_OID="6#####0#####63#"/>
+  <jeaf_address_subtype OID="J#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Facebook" PARENTTYPE_OID="7#####0#####63#"/>
+  <jeaf_address_subtype OID="K#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Twitter" PARENTTYPE_OID="7#####0#####63#"/>
+  <jeaf_address_subtype OID="L#####0#####E3#" CLASS_ID="122" VERSION="0" SUBTYPENAME="Xing" PARENTTYPE_OID="7#####0#####63#"/>
+  <jeaf_address_type OID="1#####0#####63#" CLASS_ID="114" VERSION="0" TYPENAME="Postal Address"/>
+  <jeaf_address_type OID="2#####0#####63#" CLASS_ID="114" VERSION="0" TYPENAME="Phone"/>
+  <jeaf_address_type OID="3#####0#####63#" CLASS_ID="114" VERSION="0" TYPENAME="Fax"/>
+  <jeaf_address_type OID="4#####0#####63#" CLASS_ID="114" VERSION="0" TYPENAME="Email"/>
+  <jeaf_address_type OID="5#####0#####63#" CLASS_ID="114" VERSION="0" TYPENAME="Instant Messaging"/>
+  <jeaf_address_type OID="6#####0#####63#" CLASS_ID="114" VERSION="0" TYPENAME="Homepage"/>
+  <jeaf_address_type OID="7#####0#####63#" CLASS_ID="114" VERSION="0" TYPENAME="Social Media"/>
+  <jeaf_application_localization/>
+  <jeaf_component_info OID="01####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.tx.impl.TxSupportedComponent" NAME="TxSupportedComponent" BASEPACKAGE="com.anaptecs.jeaf.junit.tx.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="1#####1#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.serviceproviders.mail.MailServiceProviderImpl" NAME="MailServiceProviderImpl" BASEPACKAGE="com.anaptecs.jeaf.serviceproviders.mail" CACHETTL="0"/>
+  <jeaf_component_info OID="1#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.accounting.impl.Accounting" NAME="Accounting" BASEPACKAGE="com.anaptecs.jeaf.accounting.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="1#####3#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.components.usermanagement.impl.AuthorizationServiceProviderImpl" NAME="AuthorizationServiceProviderImpl" BASEPACKAGE="com.anaptecs.jeaf.components.usermanagement.impl" CACHETTL="0"/>
+  <jeaf_component_info OID="2#####3#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.components.gwt.GWTIntegration" NAME="GWTIntegration" BASEPACKAGE="com.anaptecs.jeaf.components.gwt" CACHETTL="600"/>
+  <jeaf_component_info OID="3#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.impl.AuthorizationTest" NAME="AuthorizationTest" BASEPACKAGE="com.anaptecs.jeaf.junit.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="3#####3#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.components.scheduling.impl.Scheduling" NAME="Scheduling" BASEPACKAGE="com.anaptecs.jeaf.components.scheduling.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="4#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.impl.GeneratorTest" NAME="GeneratorTest" BASEPACKAGE="com.anaptecs.jeaf.junit.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="4#####3#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.components.systemmanagement.SystemManagement" NAME="SystemManagement" BASEPACKAGE="com.anaptecs.jeaf.components.systemmanagement" CACHETTL="600"/>
+  <jeaf_component_info OID="5#####3#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.components.usermanagement.impl.UserManagement" NAME="UserManagement" BASEPACKAGE="com.anaptecs.jeaf.components.usermanagement.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="6#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.impl.InterceptorTest" NAME="InterceptorTest" BASEPACKAGE="com.anaptecs.jeaf.junit.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="7#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.impl.internal.InternalStuff" NAME="InternalStuff" BASEPACKAGE="com.anaptecs.jeaf.junit.impl.internal" CACHETTL="600"/>
+  <jeaf_component_info OID="8#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.impl.MailTest" NAME="MailTest" BASEPACKAGE="com.anaptecs.jeaf.junit.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="9#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.serviceproviders.MyServiceProviderImpl" NAME="MyServiceProviderImpl" BASEPACKAGE="com.anaptecs.jeaf.junit.serviceproviders" CACHETTL="0"/>
+  <jeaf_component_info OID="B#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.impl.PersistenceTest" NAME="PersistenceTest" BASEPACKAGE="com.anaptecs.jeaf.junit.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="O#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.impl.RequiredComponent" NAME="RequiredComponent" BASEPACKAGE="com.anaptecs.jeaf.junit.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="P#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.impl.SchedulingTest" NAME="SchedulingTest" BASEPACKAGE="com.anaptecs.jeaf.junit.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="Q#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.accounting.impl.schufa.impl.SCHUFA" NAME="SCHUFA" BASEPACKAGE="com.anaptecs.jeaf.accounting.impl.schufa.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="R#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.impl.SecurityTest" NAME="SecurityTest" BASEPACKAGE="com.anaptecs.jeaf.junit.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="S#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.accounting.impl.swift.impl.SWIFTAccounting" NAME="SWIFTAccounting" BASEPACKAGE="com.anaptecs.jeaf.accounting.impl.swift.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="T#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.impl.TestComponent" NAME="TestComponent" BASEPACKAGE="com.anaptecs.jeaf.junit.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="U#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.tx.impl.TransactionHandlingComponent" NAME="TransactionHandlingComponent" BASEPACKAGE="com.anaptecs.jeaf.junit.tx.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="V#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.tx.impl.TxMandatoryComponent" NAME="TxMandatoryComponent" BASEPACKAGE="com.anaptecs.jeaf.junit.tx.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="W#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.tx.impl.TxNeverComponent" NAME="TxNeverComponent" BASEPACKAGE="com.anaptecs.jeaf.junit.tx.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="X#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.tx.impl.TxNotSupportedComponent" NAME="TxNotSupportedComponent" BASEPACKAGE="com.anaptecs.jeaf.junit.tx.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="Y#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.tx.impl.TxRequiredComponent" NAME="TxRequiredComponent" BASEPACKAGE="com.anaptecs.jeaf.junit.tx.impl" CACHETTL="600"/>
+  <jeaf_component_info OID="Z#####2#####A##" CLASS_ID="10" VERSION="0" COMPONENTID="com.anaptecs.jeaf.junit.tx.impl.TxRequiresNewComponent" NAME="TxRequiresNewComponent" BASEPACKAGE="com.anaptecs.jeaf.junit.tx.impl" CACHETTL="600"/>
+  <jeaf_country OID="1#####0#####23#" CLASS_ID="110" VERSION="0" NAME="France"/>
+  <jeaf_country OID="2#####0#####23#" CLASS_ID="110" VERSION="0" NAME="Germany"/>
+  <jeaf_country OID="3#####0#####23#" CLASS_ID="110" VERSION="0" NAME="Great Britain"/>
+  <jeaf_country OID="4#####0#####23#" CLASS_ID="110" VERSION="0" NAME="Italy"/>
+  <jeaf_country OID="5#####0#####23#" CLASS_ID="110" VERSION="0" NAME="Spain"/>
+  <jeaf_country OID="6#####0#####23#" CLASS_ID="110" VERSION="0" NAME="Sweden"/>
+  <jeaf_country OID="7#####0#####23#" CLASS_ID="110" VERSION="0" NAME="Switzerland"/>
+  <jeaf_country OID="8#####0#####23#" CLASS_ID="110" VERSION="0" NAME="USA"/>
+  <jeaf_country OID="9#####0#####23#" CLASS_ID="110" VERSION="0" NAME="Unknown"/>
+  <jeaf_group_type OID="1#####0#####7C#" CLASS_ID="124" VERSION="0" NAME="Friends"/>
+  <jeaf_link_status/>
+  <jeaf_localization/>
+  <jeaf_localization_validity/>
+  <jeaf_message_definition/>
+  <jeaf_message_folder/>
+  <jeaf_org_element OID="0#####0####U#" CLASS_ID="101" VERSION="0" NAME="Root User" FIRSTNAME="JEAF" DATEOFBIRTH="1900-01-31 00:00:00.0" LANGUAGE="en" GENDERNAME="UNKNOWN" ACCOUNT_OID="0#####0####V#"/>
+  <jeaf_org_element OID="1#####0####U#" CLASS_ID="101" VERSION="0" NAME="Scheduler User" FIRSTNAME="JEAF" DATEOFBIRTH="1900-01-31 00:00:00.0" LANGUAGE="en" GENDERNAME="UNKNOWN" ACCOUNT_OID="1#####0####V#"/>
+  <jeaf_org_element OID="2#####0####U#" CLASS_ID="101" VERSION="0" NAME="Unknown" FIRSTNAME="User" DATEOFBIRTH="1900-01-31 00:00:00.0" LANGUAGE="en" GENDERNAME="UNKNOWN" ACCOUNT_OID="2#####0####V#"/>
+  <jeaf_org_element OID="3#####0####U#" CLASS_ID="101" VERSION="0" NAME="Duck" FIRSTNAME="Daisy" DATEOFBIRTH="1900-01-31 00:00:00.0" LANGUAGE="zh" GENDERNAME="FEMALE" ACCOUNT_OID="3#####0####V#"/>
+  <jeaf_org_unit_type/>
+  <jeaf_permission OID="0#####0####Z#" CLASS_ID="103" VERSION="0" INHERITABLE="false" OWNER_OID="3#####0####U#" ROLEDEFINITION_OID="0#####0####W#"/>
+  <jeaf_permission OID="1#####0####Z#" CLASS_ID="103" VERSION="0" INHERITABLE="false" OWNER_OID="3#####0####U#" ROLEDEFINITION_OID="1#####0####W#"/>
+  <jeaf_permission OID="2#####0####Z#" CLASS_ID="103" VERSION="0" INHERITABLE="false" OWNER_OID="3#####0####U#" ROLEDEFINITION_OID="2#####0####W#"/>
+  <jeaf_permission OID="3#####0####Z#" CLASS_ID="103" VERSION="0" INHERITABLE="false" OWNER_OID="3#####0####U#" ROLEDEFINITION_OID="3#####0####W#"/>
+  <jeaf_permission OID="4#####0####Z#" CLASS_ID="103" VERSION="0" INHERITABLE="false" OWNER_OID="3#####0####U#" ROLEDEFINITION_OID="4#####0####W#"/>
+  <jeaf_property OID="2#####1#####B##" CLASS_ID="11" VERSION="0" NAME="mailDisableSending" VALUE="" COMMENT="" TYPE="java.lang.Boolean" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="2#####2#####B##" CLASS_ID="11" VERSION="0" NAME="defaultInterrestRate" VALUE="0.105" COMMENT="" TYPE="java.lang.Float" COMPONENT_OID="1#####2#####A##"/>
+  <jeaf_property OID="3#####1#####B##" CLASS_ID="11" VERSION="0" NAME="mailTransportProtocol" VALUE="" COMMENT="" TYPE="java.lang.String" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="4#####1#####B##" CLASS_ID="11" VERSION="0" NAME="mailSmtpHost" VALUE="" COMMENT="" TYPE="java.lang.String" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="5#####1#####B##" CLASS_ID="11" VERSION="0" NAME="mailStoreProtocol" VALUE="" COMMENT="" TYPE="java.lang.String" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="5#####2#####B##" CLASS_ID="11" VERSION="0" NAME="testProperty" VALUE="42" COMMENT="" TYPE="java.lang.Integer" COMPONENT_OID="4#####2#####A##"/>
+  <jeaf_property OID="6#####1#####B##" CLASS_ID="11" VERSION="0" NAME="mailDebug" VALUE="" COMMENT="" TYPE="java.lang.Boolean" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="6#####3#####B##" CLASS_ID="11" VERSION="0" NAME="passwordValidity" VALUE="" COMMENT="" TYPE="java.lang.Integer" COMPONENT_OID="5#####3#####A##"/>
+  <jeaf_property OID="7#####1#####B##" CLASS_ID="11" VERSION="0" NAME="mailFrom" VALUE="" COMMENT="" TYPE="java.lang.String" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="7#####3#####B##" CLASS_ID="11" VERSION="0" NAME="passwordPattern" VALUE="" COMMENT="" TYPE="java.lang.String" COMPONENT_OID="5#####3#####A##"/>
+  <jeaf_property OID="8#####1#####B##" CLASS_ID="11" VERSION="0" NAME="mailSmtpUser" VALUE="" COMMENT="" TYPE="java.lang.String" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="8#####2#####B##" CLASS_ID="11" VERSION="0" NAME="mailSmtpPassword" VALUE="" COMMENT="" TYPE="java.lang.String" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="8#####3#####B##" CLASS_ID="11" VERSION="0" NAME="defaultRoleNames" VALUE="" COMMENT="" TYPE="java.lang.String" COMPONENT_OID="5#####3#####A##"/>
+  <jeaf_property OID="9#####1#####B##" CLASS_ID="11" VERSION="0" NAME="mailSmtpPort" VALUE="" COMMENT="" TYPE="java.lang.Integer" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="9#####2#####B##" CLASS_ID="11" VERSION="0" NAME="mailSmtpSslEnable" VALUE="" COMMENT="" TYPE="java.lang.Boolean" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="9#####3#####B##" CLASS_ID="11" VERSION="0" NAME="mailSmtpStarttlsEnable" VALUE="" COMMENT="" TYPE="java.lang.Boolean" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="A#####1#####B##" CLASS_ID="11" VERSION="0" NAME="mailSmtpSendpartial" VALUE="" COMMENT="" TYPE="java.lang.Boolean" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="A#####2#####B##" CLASS_ID="11" VERSION="0" NAME="myProperty" VALUE="" COMMENT="" TYPE="java.lang.String" COMPONENT_OID="9#####2#####A##"/>
+  <jeaf_property OID="A#####3#####B##" CLASS_ID="11" VERSION="0" NAME="mailSmtpAuth" VALUE="" COMMENT="" TYPE="java.lang.Boolean" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="B#####1#####B##" CLASS_ID="11" VERSION="0" NAME="mailSessionJNDI" VALUE="java:/Mail" COMMENT="" TYPE="java.lang.String" COMPONENT_OID="1#####1#####A##"/>
+  <jeaf_property OID="C#####2#####B##" CLASS_ID="11" VERSION="0" NAME="byteProperty" VALUE="" COMMENT="" TYPE="java.lang.Byte" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_property OID="D#####2#####B##" CLASS_ID="11" VERSION="0" NAME="shortProperty" VALUE="" COMMENT="" TYPE="java.lang.Short" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_property OID="E#####2#####B##" CLASS_ID="11" VERSION="0" NAME="calendarProperty" VALUE="" COMMENT="" TYPE="java.util.Calendar" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_property OID="F#####2#####B##" CLASS_ID="11" VERSION="0" NAME="longProperty" VALUE="" COMMENT="" TYPE="java.lang.Long" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_property OID="G#####2#####B##" CLASS_ID="11" VERSION="0" NAME="localeProperty" VALUE="" COMMENT="" TYPE="java.util.Locale" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_property OID="H#####2#####B##" CLASS_ID="11" VERSION="0" NAME="booleanProperty" VALUE="" COMMENT="" TYPE="java.lang.Boolean" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_property OID="I#####2#####B##" CLASS_ID="11" VERSION="0" NAME="characterProperty" VALUE="" COMMENT="" TYPE="java.lang.Character" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_property OID="J#####2#####B##" CLASS_ID="11" VERSION="0" NAME="doubleProperty" VALUE="" COMMENT="" TYPE="java.lang.Double" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_property OID="K#####2#####B##" CLASS_ID="11" VERSION="0" NAME="stringProperty" VALUE="" COMMENT="" TYPE="java.lang.String" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_property OID="L#####2#####B##" CLASS_ID="11" VERSION="0" NAME="floatProperty" VALUE="" COMMENT="" TYPE="java.lang.Float" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_property OID="M#####2#####B##" CLASS_ID="11" VERSION="0" NAME="integerProperty" VALUE="42" COMMENT="" TYPE="java.lang.Integer" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_property OID="N#####2#####B##" CLASS_ID="11" VERSION="0" NAME="classProperty" VALUE="" COMMENT="" TYPE="java.lang.Class" COMPONENT_OID="B#####2#####A##"/>
+  <jeaf_sessions OID="1" VERSION="3" LASTSESSION="3#####"/>
+  <jeaf_state OID="1#####0#####33#" CLASS_ID="111" VERSION="0" NAME="N/A" COUNTRY_OID="1#####0#####23#"/>
+  <jeaf_state OID="2#####0#####33#" CLASS_ID="111" VERSION="0" NAME="California" COUNTRY_OID="1#####0#####23#"/>
+  <jeaf_state OID="3#####0#####33#" CLASS_ID="111" VERSION="0" NAME="New York" COUNTRY_OID="1#####0#####23#"/>
+  <jeaf_user_account_permission_link PERMISSIONBO_OID="1#####0####Z#" USERACCOUNTBO_OID="2#####0####V#"/>
+  <jeaf_user_account_permission_link PERMISSIONBO_OID="2#####0####Z#" USERACCOUNTBO_OID="2#####0####V#"/>
+  <jeaf_user_account_permission_link PERMISSIONBO_OID="3#####0####Z#" USERACCOUNTBO_OID="2#####0####V#"/>
+  <jeaf_user_account_permission_link PERMISSIONBO_OID="4#####0####Z#" USERACCOUNTBO_OID="2#####0####V#"/>
+  <jeaf_user_account_permission_link PERMISSIONBO_OID="0#####0####Z#" USERACCOUNTBO_OID="3#####0####V#"/>
+  <m_n_link/>
+  <m_releation/>
+  <n_relation/>
+  <publicclassbo/>
+  <responsibilitytypebo/>
+  <role_definition OID="0#####0####W#" CLASS_ID="104" VERSION="0" ROLENAME="UserDefinition"/>
+  <role_definition OID="1#####0####W#" CLASS_ID="104" VERSION="0" ROLENAME="AnonymousDefinition"/>
+  <role_definition OID="2#####0####W#" CLASS_ID="104" VERSION="0" ROLENAME="AvailableServicesDefinition"/>
+  <role_definition OID="3#####0####W#" CLASS_ID="104" VERSION="0" ROLENAME="CheckService"/>
+  <role_definition OID="4#####0####W#" CLASS_ID="104" VERSION="0" ROLENAME="GetAllActiveComponents"/>
+  <sample_address/>
+  <sample_person/>
+  <scheduled_task/>
+  <swifttransactionlogbo/>
+  <user_account OID="0#####0####V#" CLASS_ID="102" VERSION="1" LOGINNAME="root" ENCRYPTEDPASSWORD="r7Ucpv02I0V/MMlj7xSLsHoQ/Ag=" LOCKED="false" PASSWORDEXPIRATION="2050-12-31 00:00:00.0" ROOTAUTHORIZATION="true"/>
+  <user_account OID="1#####0####V#" CLASS_ID="102" VERSION="1" LOGINNAME="scheduler" ENCRYPTEDPASSWORD="r7Ucpv02I0V/MMlj7xSLsHoQ/Ag=" LOCKED="false" PASSWORDEXPIRATION="2050-12-31 00:00:00.0" ROOTAUTHORIZATION="true"/>
+  <user_account OID="2#####0####V#" CLASS_ID="102" VERSION="1" LOGINNAME="anonymous" ENCRYPTEDPASSWORD="2jmj7l5rSw0yVb/vlWAYkK/YBwk=" LOCKED="false" PASSWORDEXPIRATION="2050-12-31 00:00:00.0"/>
+  <user_account OID="3#####0####V#" CLASS_ID="102" VERSION="1" LOGINNAME="daisy.duck" ENCRYPTEDPASSWORD="Eqv1p2kaBV3zpxi/2CU29EGLl78=" LOCKED="false" PASSWORDEXPIRATION="2013-12-31 00:00:00.0" START="2007-01-01 00:00:00.0" END="2050-12-31 00:00:00.0"/>
+</dataset>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.anaptecs.jeaf.tools</groupId>
+		<artifactId>jeaf-tools-impl-project</artifactId>
+		<version>1.8.1-SNAPSHOT</version>
+	</parent>
+
+	<name>JEAF Tools Impl JMX</name>
+	<artifactId>jeaf-tools-impl-jmx</artifactId>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.anaptecs.jeaf.tools</groupId>
+			<artifactId>jeaf-tools-api</artifactId>
+			<version>${jeaf.tools.api.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-jmx -->
+		<dependency>
+		    <groupId>io.micrometer</groupId>
+		    <artifactId>micrometer-registry-jmx</artifactId>
+		    <version>${micrometer.api.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.anaptecs.jeaf.tools</groupId>
+			<artifactId>jeaf-tools-impl</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.x-fun</groupId>
+			<artifactId>jeaf-x-fun-test-runtime</artifactId>
+			<version>${jeaf.x-fun.test-runtime.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>${javax.el.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-jdk14 -->
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-jdk14</artifactId>
+		    <version>${slf4j-api.version}</version>
+		    <scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.anaptecs.jeaf.maven</groupId>
+				<artifactId>jeaf-maven-plugin</artifactId>
+				<version>${maven.jeaf-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>Clean</id>
+						<goals>
+							<goal>GenerateJEAFConfig</goal>
+						</goals>
+						<phase>clean</phase>
+						<configuration>
+							<resourceGenDirectory>${project.basedir}/src-gen/test/java</resourceGenDirectory>
+							<cleanMetaInfDirectory>true</cleanMetaInfDirectory>
+							<cleanOnly>true</cleanOnly>
+						</configuration>
+					</execution>
+					<execution>
+						<id>GenerateConfigs</id>
+						<goals>
+							<goal>GenerateJEAFConfig</goal>
+						</goals>
+						<configuration>
+							<testResourceGenDirectory>${basedir}/src-gen/test/resources</testResourceGenDirectory>
+							<testTargetDirectory>${basedir}/target/test-classes</testTargetDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.version}</version>
+				<configuration>
+					<systemPropertyVariables>
+						<jeaf.tools.xml.document.builder.pool.size>1</jeaf.tools.xml.document.builder.pool.size>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+			<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+				<groupId>org.eclipse.m2e</groupId>
+				<artifactId>lifecycle-mapping</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<lifecycleMappingMetadata>
+						<pluginExecutions>
+							<pluginExecution>
+								<pluginExecutionFilter>
+									<groupId>com.anaptecs.jeaf.maven</groupId>
+									<artifactId>jeaf-maven-plugin</artifactId>
+									<versionRange>[1.6.0,)</versionRange>
+									<goals>
+										<goal>GenerateJEAFConfig</goal>
+									</goals>
+								</pluginExecutionFilter>
+								<action>
+									<ignore />
+								</action>
+							</pluginExecution>
+						</pluginExecutions>
+					</lifecycleMappingMetadata>
+				</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Parent POM contains all general settings for building and releasing of all JEAF projects. -->
+	<parent>
+		<groupId>com.anaptecs.jeaf</groupId>
+		<artifactId>jeaf-module-project-parent</artifactId>
+		<version>1.9.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.anaptecs.jeaf.tools</groupId>
+	<artifactId>jeaf-tools-impl-project</artifactId>
+	<version>1.8.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>JEAF Tools Impl Project</name>
+	<description>Project provides implementation of JEAF Tools API.</description>
+	<url>https://www.anaptecs.de/jeaf</url>
+
+	<scm>
+		<connection>scm:git:https://bitbucket.org/anaptecs/jeaf-tools-impl.git</connection>
+		<developerConnection>scm:git:https://bitbucket.org/anaptecs/jeaf-tools-impl.git</developerConnection>
+		<url>https://bitbucket.org/anaptecs/jeaf-tools-impl</url>
+		<tag>HEAD</tag>
+	</scm>
+	
+	<properties>
+		<jeaf.x-fun.test-runtime.version>1.8.1-SNAPSHOT</jeaf.x-fun.test-runtime.version>
+		<jeaf.tools.api.version>1.8.1-SNAPSHOT</jeaf.tools.api.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>jeaf-tools-impl</module>
+		<module>jeaf-tools-impl-jmx</module>
+		<module>jeaf-tools-impl-newrelic</module>
+	</modules>
+
+</project>

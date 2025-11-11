@@ -1,0 +1,3 @@
+com.anaptecs.jeaf.tools.api.ToolsLoaderStartupInfoWriter
+com.anaptecs.jeaf.tools.impl.xml.XMLToolsImpl
+com.anaptecs.jeaf.xfun.test.runtime.ConfigurationProviderImpl

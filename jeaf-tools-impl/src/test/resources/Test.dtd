@@ -1,0 +1,140 @@
+<!-- 
+     Definition of the root element. The root element has exactly one message folder as child and one element containing 
+     all information that are required to generate the appropriate java class.
+-->
+<!ELEMENT Root (ClassInfo?, ApplicationInfo?, MessageFolder+, ElementWithValue*, EmptyElement*, NoContentElement*)>
+
+<!-- 
+     Element contains all information that are required to generate a java class that is used to access the messages 
+     that are defined within the corresponding xml file. The generated java class will only contain a set of constants 
+     that can be used to identify a defined message. The message text itself will not be generated to this class, so 
+     that the messages can be changed without changing the code. This element is optional and only has to be defined in 
+     the case that the set of constants should be generated.
+     
+     Attributes:
+     - className Name of the class that should be generated. The attribute must be set. Together with attribute 
+       'package' this attribute defines the fully qualified class name.
+     
+     - package Name of the package to which the class belongs. The attribute must be set. Together with attribute 
+       'className' this attribute defines the fully qualified class name.
+       
+     - description Javadoc description that describes the generated class. The attribute is optional.
+       
+     - author Value for javadoc author tag (@author).
+     
+     - version Value for javadoc version tag (@version).
+-->
+<!ELEMENT ApplicationInfo EMPTY>
+<!ATTLIST ApplicationInfo
+    name    CDATA  #REQUIRED>
+    
+<!-- 
+     Element contains all information that are required to generate a java class that is used to access the messages 
+     that are defined within the corresponding xml file. The generated java class will only contain a set of constants 
+     that can be used to identify a defined message. The message text itself will not be generated to this class, so 
+     that the messages can be changed without changing the code. This element is optional and only has to be defined in 
+     the case that the set of constants should be generated.
+     
+     Attributes:
+     - className Name of the class that should be generated. The attribute must be set. Together with attribute 
+       'package' this attribute defines the fully qualified class name.
+     
+     - package Name of the package to which the class belongs. The attribute must be set. Together with attribute 
+       'className' this attribute defines the fully qualified class name.
+       
+     - description Javadoc description that describes the generated class. The attribute is optional.
+       
+     - author Value for javadoc author tag (@author).
+     
+     - version Value for javadoc version tag (@version).
+-->
+<!ELEMENT ClassInfo EMPTY>
+<!ATTLIST ClassInfo
+    className    CDATA  #REQUIRED
+    package	     CDATA  #REQUIRED
+    description	 CDATA  #IMPLIED
+    author       CDATA  #IMPLIED
+    version      CDATA  #IMPLIED>
+
+<!-- 
+     Definition of the message folder element. A message folder can contain other message folders as well as simple 
+     messages. A message folder is only relevant to structure the messages, but does not impact the generated 
+     constants.
+     
+     Attributes:
+     - name Name of the message folder as it will be displayed in the configuration utility. The attribute is 
+       required.
+     
+     - idRangeBegin Lowest number that can be used as message id for all messages within this folder. The attribute 
+       defines the lower border for valid message id values.
+
+     - idRangeEnd Highest number that can be used as message id for all messages within this folder. The attribute 
+       defines the upper border for valid message id values.
+-->
+<!ELEMENT MessageFolder (MessageFolder*, Message*)>
+<!ATTLIST MessageFolder
+    name	      CDATA  #REQUIRED
+    idRangeBegin  CDATA  #IMPLIED
+    idRangeEnd    CDATA  #IMPLIED>
+
+<!-- 
+     Definition of a message element. For each message element an appropriate constant will be generated in the java 
+     class. The message text itself will not be generated to this class, so that the messages can be changed without 
+     changing the code. In order to support customized messages for different countries and languages this element may 
+     have multiple sub nodes containing message texts.
+     
+     Attributes:
+     - messageID ID of the message. The attribute must contain only numbers since, within the generated class integer 
+       values for message ids are used. The attribute is required.
+     
+     - name Name identifying the message. This name is used as name for the constant in generated java class. The 
+       attribute is required.
+       
+     - type Attribute sets the type of a message. Currently a message can either be a "regular" message (INFO) or an 
+       error message (ERROR). The third option is that an element describes localized text. The attribute is required.
+       
+     - defaultText Default text of the message. The message text can be parameterized as defined by JDK class 
+       java.text.MessageFormat. The default message text is used whenever no customized message for the specific locale
+       is available. The attribute is required.
+       
+     - description Description of the message. This description is used as javadoc comment in the generated class. The
+       attribute is required.
+       
+     - traceLevel Trace level of the message. It is used to log the message on the required level. The default value is 
+       ERROR.
+-->
+<!ELEMENT Message (LocalizedMessage*)>
+<!ATTLIST Message
+    messageID	 CDATA                                         #REQUIRED
+    name 		 CDATA                                         #REQUIRED
+    type 		 (INFO | ERROR | LOCALIZED_STRING)             #REQUIRED
+    defaultText  CDATA                                         #REQUIRED
+    description  CDATA                                         #IMPLIED
+    traceLevel   (TRACE | DEBUG | INFO | WARN | ERROR | FATAL) #IMPLIED
+    deprecated   (TRUE | FALSE) 							   #IMPLIED>
+  
+<!--
+     Definition of the message text element for a special locale. These optional elements can be used to provide message
+     texts that are customized for a specific locale.
+     
+     Attributes:
+     - language Language for which the locale specific message text should be used. The attribute is required.
+     
+     - country Country for which the locale specific message text should be used. The attribute is optional if no 
+       specific locale variant is defined.
+       
+     - variant Variant of the locale for which the specific message text should be used. The attribute is optional. If 
+       this attribute is set also the "country" must be set.
+       
+     - localizedText Message text that will be used for this specific locale. The attribute is required.
+-->
+<!ELEMENT LocalizedMessage EMPTY>
+<!ATTLIST LocalizedMessage 
+    language         CDATA  #REQUIRED
+    country          CDATA  #REQUIRED
+    variant          CDATA  #REQUIRED
+    localizedText    CDATA  #REQUIRED>
+
+<!ELEMENT ElementWithValue (#PCDATA)>
+<!ELEMENT EmptyElement EMPTY>
+<!ELEMENT NoContentElement (#PCDATA)>

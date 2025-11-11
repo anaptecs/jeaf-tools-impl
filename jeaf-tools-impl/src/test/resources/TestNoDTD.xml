@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Root>
+    <ClassInfo className="XFunMessages" 
+               package="com.anaptecs.jeaf.api.xfun"
+               description="Class contains all generated message constants for JEAF X-Functions." 
+               author="JEAF Development Team" 
+               version="1.0"/>               
+
+    <MessageFolder name="X-Fun" idRangeBegin="10" idRangeEnd="299">
+            <MessageFolder name="VersionInfo" idRangeBegin="13" idRangeEnd="19">
+                <Message messageID="13" 
+                    name="UNABLE_TO_LOCATE_VERSION_BUNDLE" 
+                    type="ERROR"
+                    traceLevel="ERROR"
+                    defaultText="Property file ''{0}'' could not be found within the applications class path." 
+                    description="Exceptions with this error code are thrown if a property file that contains version information about an application or software component could not be located within the applications class path."/>
+
+                <Message messageID="14"
+                    name="PRODUCT_VERSION_INFO" 
+                    type="INFO"
+                    traceLevel="INFO"
+                    defaultText="Version: {0}" 
+                    description="Info-Message contains all relevant version information to analyze an exception."/>
+
+                <Message messageID="15"
+                    name="COMPANY_INFO" 
+                    type="INFO"
+                    defaultText="{0}" 
+                    description="Info-Message is used to trace the company name of a version info object."
+                    traceLevel="INFO"/>
+
+                <Message messageID="16"
+                    name="PRODUCT_INFO" 
+                    type="INFO"
+                    defaultText="{0}" 
+                    description="Info-Message is used to trace the product name of a version info object."
+                    traceLevel="INFO"/>
+
+                <Message messageID="17"
+                    name="VERSION_INFO" 
+                    type="INFO"
+                    defaultText="anaptecs JEAF-Framework {0}" 
+                    description="Info-Message is used to trace the version details."
+                    traceLevel="INFO"/>
+                    
+                <Message messageID="18"
+                    name="APPLICATION_VERSION_INFO" 
+                    type="INFO"
+                    defaultText="{0} {1} (Build date: {2})" 
+                    description="Info-Message is used to trace the version details of the application."
+                    traceLevel="INFO"/>
+                    
+                <Message messageID="19"
+                    name="GENERIC_MESSAGE" 
+                    type="INFO"
+                    defaultText="{0}" 
+                    description="Info-Message is used to trace generic messages"
+                    traceLevel="INFO"/>
+            </MessageFolder>
+
+            <MessageFolder name="Verifier" idRangeBegin="20" idRangeEnd="49">
+                <Message messageID="20" 
+                    name="CLASS_NOT_LOADABLE" 
+                    type="ERROR"
+                    defaultText="Class ''{0}'' could not be found within the classpath." 
+                    description="This error code is used by the verifier to indicate that a specific class is not within the application's classpath."/>
+
+                <Message messageID="21" 
+                    name="NULL_IS_NOT_A_VALID_CLASS_NAME" 
+                    type="ERROR"
+                    defaultText="NULL is not a valid class name." 
+                    description="This error code is used by the verifier to indicate that a passed class had the invalid value null."/>
+
+                <Message messageID="22" 
+                    name="SET_IS_INVALID" 
+                    type="ERROR"
+                    defaultText="The values ''{0}'' (lower bound) and ''{1}'' (upper bound) do not define a valid set. The lower bound must be less or equal to the upper bound." 
+                    description="This error code is used by the verifier to indicate that the passed values do not define a valid set."/>
+
+                <Message messageID="23" 
+                    name="VALUE_IS_NOT_PART_OF_SET" 
+                    type="ERROR"
+                    defaultText="Value ''{0}'' is not part of set [{1};{2}]." 
+                    description="This error code is used by the verifier to indicate that a passed value is not part of a defined set."/>
+
+                <Message messageID="24" 
+                    name="OBJECT_IS_NOT_ASSIGNABLE" 
+                    type="ERROR"
+                    defaultText="Instances of class ''{0}'' can not be assigned to class / interface ''{1}''." 
+                    description="This error code is used by the verifier to indicate that a passed object is not assignable to a class or interface."/>
+
+                <Message messageID="25" 
+                    name="NULL_IS_NOT_A_REAL_STRING" 
+                    type="ERROR"
+                    defaultText="String '{0}' is null." 
+                    description="This error code is used by the verifier to indicate that a passed string is null."/>
+
+                <Message messageID="26" 
+                    name="STRING_IS_EMPTY" 
+                    type="ERROR"
+                    defaultText="String '{0}' is empty." 
+                    description="This error code is used by the verifier to indicate that a passed string is empty."/>
+
+                <Message messageID="27" 
+                    name="VERIFICATION_SUCCESSFUL" 
+                    type="INFO"
+                    defaultText="Verification completed without any errors or warnings." 
+                    description="This message code is to indicate that a verification result does neither contain errors nor warnings."/>
+
+                <Message messageID="28" 
+                    name="VERIFICATION_FAILED" 
+                    type="ERROR"
+                    defaultText="Verification failed with {0} error(s) and {1} warning(s). \nError(s):{2}\nWarning(s):{3}"
+                    description="This error code is used to indicate that a verification failed."/>
+
+                <Message messageID="29" 
+                    name="CONSTRAINT_CHECK_FAILED_DUE_TO_EXCEPTION" 
+                    type="ERROR"
+                    defaultText="Constraint check failed due to thrown ApplicationException. \nOriginal message:\n{0}"
+                    description="This error code is used to indicate that a verification failed."/>
+
+                <Message messageID="30" 
+                    name="VALUE_IS_PART_OF_SET" 
+                    type="ERROR"
+                    defaultText="Value ''{0}'' is part of set [{1};{2}]." 
+                    description="This error code is used by the verifier to indicate that a passed value is part of a defined set."/>
+
+                <Message messageID="31" 
+                    name="INVALID_SUBSET" 
+                    type="ERROR"
+                    defaultText="The set [{0};{1}] is not a subset of [{2};{3}]." 
+                    description="This error code is used by the verifier to indicate that a passed set is not a subset of the other passed set."/>
+
+                <Message messageID="32" 
+                    name="SETS_HAVE_NO_INTERSECTION" 
+                    type="ERROR"
+                    defaultText="The sets [{0};{1}] and [{2};{3}] have no intersection." 
+                    description="This error code is used by the verifier to indicate that the passed sets do not have a required intersection."/>
+
+                <Message messageID="33" 
+                    name="SETS_HAVE_INTERSECTION" 
+                    type="ERROR"
+                    defaultText="The sets [{0};{1}] and [{2};{3}] have an intersection." 
+                    description="This error code is used by the verifier to indicate that the passed sets do not have an empty intersection."/>
+
+                <Message messageID="34" 
+		             name="IS_NULL" 
+		             type="ERROR" 
+		             defaultText="Object ''{0}'' must be NULL." 
+		             description="Exceptions with this error code are thrown if a verification for a null value fails."/>
+
+                <Message messageID="35" 
+                    name="PATTERN_NOT_MATCHED" 
+                    type="ERROR" 
+                    defaultText="Character sequence ''{0}'' does not match to pattern ''{1}''." 
+                    description="Exceptions with this error code are thrown if a verification for a pattern fails."/>
+
+                <Message messageID="36" 
+                    name="STRING_TOO_LONG" 
+                    type="ERROR" 
+                    defaultText="The String ''{0}'' exceeds the maximum length ''{1}''." 
+                    description="Exceptions with this error code are thrown if a verification for the maximum string length fails."/>
+
+                <Message messageID="37" 
+                    name="NO_CURRENT_TRACE_OBJECT" 
+                    type="ERROR" 
+                    defaultText="Method 'Trace.getCurrentTrace()' must only be called from within a service call." 
+                    description="Exceptions with this error code are thrown if the method 'Trace.getCurrentTrace()' is called outside of a service call."/>
+
+                <Message messageID="38" 
+                    name="COLLECTION_DOES_NOT_HAVE_MIN_SIZE" 
+                    type="ERROR" 
+                    defaultText="Collection does not contain the minimum size of elements. Expected at least ''{0}'' elements." 
+                    description="Exceptions with this error code are thrown if a verification for a minimum collection size fails."/>
+
+                <Message messageID="39" 
+                    name="COLLECTION_EXCEEDS_MAX_SIZE" 
+                    type="ERROR" 
+                    defaultText="Collection exceeds the maximum size of elements. Expected not more than ''{0}'' elements." 
+                    description="Exceptions with this error code are thrown if a verification for a maximum collection size fails."/>
+
+                <Message messageID="40" 
+                    name="INVALID_PERIOD" 
+                    type="ERROR" 
+                    defaultText="Start and end dates do not define a valid period. (Start: {0} End: {1})" 
+                    description="Exceptions with this error code are thrown if a verification for a valid period fails."/>
+
+                <Message messageID="41" 
+                    name="CONSTRAINT_VIOLATION" 
+                    type="ERROR" 
+                    defaultText="{0}" 
+                    description="Exceptions with this error code are thrown if one or more constraint vialoations fail."/>
+
+                <Message messageID="42" 
+                    name="INTERNAL_ERROR" 
+                    type="ERROR" 
+                    defaultText="Internal error. {0}" 
+                    description="Exceptions with this error code are thrown if an internal error occurs. An internal error are such things as  not expected subclass etc."/>
+
+                <Message messageID="43" 
+                    name="NOT_TRUE" 
+                    type="ERROR" 
+                    defaultText="{0}" 
+                    description="Exceptions with this error code are thrown if an condition is not fullfilled"/>
+
+                <Message messageID="44" 
+                    name="NOT_FALSE" 
+                    type="ERROR" 
+                    defaultText="{0}" 
+                    description="Exceptions with this error code are thrown if an condition is not fullfilled"/>
+                    
+                <Message messageID="45" 
+                    name="INVALID_EMAIL_ADDRESS" 
+                    type="ERROR" 
+                    defaultText="{0}" 
+                    description="Exceptions with this error code are thrown if a verification for an email address fails."/>
+                    
+                <Message messageID="46" 
+                    name="UNEXPECTED_ENUM_LITERAL" 
+                    type="ERROR" 
+                    defaultText="Internal error. Unable to process unexpected literal '{0}' of enumeration '{1}'." 
+                    description="Exceptions with this error code are thrown if an unexpected enumeration literal is met."/>
+            </MessageFolder>
+
+            <MessageFolder name="DatatypeConverter" idRangeBegin="70" idRangeEnd="79">
+                <Message messageID="70" 
+                    name="NO_DATATYPE_CONVERTER_DEFINED" 
+                    type="ERROR"
+                    defaultText="No datatype converter defined for combination [''{0}'',  ''{1}''] as in- and output type." 
+                    description="Exceptions with this error code are thrown if the ConverterRegistry contains no datatype converter for a passed combination of in- and output type."
+                    traceLevel="ERROR"/>
+
+                <Message messageID="71" 
+                    name="DATATYPE_CONVERTER_ALREADY_EXISTS" 
+                    type="ERROR"
+                    defaultText="A datatype converter defined for combination [''{0}'',  ''{1}''] as in- and output type is already defined. Existing implementation: ''{2}'', new implementation: ''{3}}''." 
+                    description="Exceptions with this error code are thrown if an existing datatype converter illegally should be overwritten."
+                    traceLevel="ERROR"/>
+
+                <!--  
+                <Message messageID="72" 
+                    name="" 
+                    type="INFO"
+                    defaultText="" 
+                    description=""
+                    traceLevel="INFO"/>
+
+                <Message messageID="73" 
+                    name="" 
+                    type="INFO"
+                    defaultText="" 
+                    description=""
+                    traceLevel="INFO"/>
+               -->
+
+               <Message messageID="74" 
+                    name="OUTPUT_VALUE_OUT_OF_DATATYPE_BOUNDS" 
+                    type="ERROR"
+                    defaultText="The Conversion from ''{0}'' to ''{1}'' failed because the Value of ''{0}'' is out of Bounds of the Datatype ''{1}'' " 
+                    description="Message is used to notify that the Input Value is too Big to convert it to a Value of the Output Datatype."
+                    traceLevel="ERROR"/>
+
+               <Message messageID="75" 
+                    name="OUTPUT_VALUE_CORRUPTED_DUE_TO_BITSHIFTING" 
+                    type="ERROR"
+                    defaultText="The Conversion from ''{0}'' to ''{1}'' failed because the Value of the OutputValue ''{1}'' corrupted through Bit Change " 
+                    description="Message is used to notify that the Output Value is not equal to the Input Value due to a bitshifting error."
+                    traceLevel="ERROR"/>
+
+               <Message messageID="76" 
+                    name="OUTPUT_VALUE_OUT_OF_INBETWEENSTEP_DATATYPE_BOUNDS" 
+                    type="ERROR"
+                    defaultText="The Conversion from ''{0}'' to ''{1}'' failed because the required InBetweenConversion from ''{0}'' to ''{2}'' was not possible because the Value of ''{0}'' is too High for the ''{2}'' Datatype." 
+                    description="Message is used to notify that the Input Value is too Big to convert it to a Value of the Output Datatype because of a required intermeditate Step to another Datatype which is too shortvalued."
+                    traceLevel="ERROR"/>
+
+               <Message messageID="77" 
+                    name="CANNOT_CONVERT_STRING_TO_CLASS" 
+                    type="ERROR"
+                    defaultText="Cannot convert String to Class object of type ''{0}'' due to class loading problems. Propably the class is not available within the class path." 
+                    description="Message is used to notify that a a class object could not be created from a string."
+                    traceLevel="ERROR"/>
+
+            </MessageFolder>
+
+	        <MessageFolder name="ResourceAccessProvider" idRangeBegin="180" idRangeEnd="189">
+					 <Message messageID="180" 
+					    name="LOADING_JEAF_PROPERTIES" 
+					    type="INFO"
+					    defaultText="Reading properties from resource ''{0}''." 
+					    description="Trace message for reading properties."
+					    traceLevel="INFO"/>
+					
+					 <Message messageID="181" 
+					    name="PROPERTIES_LOCATION" 
+					    type="INFO"
+					    defaultText="JEAF Properties location is ''{0}''." 
+					    description="Trace message for location of properties."
+					    traceLevel="INFO"/>
+					
+					 <Message messageID="182" 
+					    name="TRACE_PROPERTY_VALUE" 
+					    type="INFO"
+					    defaultText="{0}: ''{1}''" 
+					    description="Trace message for every loaded property."
+					    traceLevel="INFO"/>
+					
+					 <Message messageID="183" 
+					    name="MALFORMED_URL_PROPERTY" 
+					    type="ERROR"
+					    traceLevel="ERROR"
+					    defaultText="Property ''{0}'' contains malformed URL ''{1}''." 
+					    description="Exceptions with this error code if a resource access providers tries to read an url from a resource but its value is malformed."/>
+	        </MessageFolder>
+
+	        <MessageFolder name="LocaleProvider" idRangeEnd="220" idRangeBegin="229">
+	            <Message messageID="220" 
+	                name="UNABLE_TO_LOAD_LOCALE_PROVIDER" 
+	                traceLevel="ERROR" 
+	                type="ERROR" 
+	                defaultText="Unable to load locale provider implementation. Using default locale provider instead."
+	                description="Messages with this message id are traced if an exception occurs when trying to load a locale provider." />
+	        </MessageFolder>
+
+
+	        <MessageFolder name="Types" idRangeEnd="255" idRangeBegin="259">
+	                <Message messageID="255" 
+	                    name="MAX_BASE36_VALUE_EXCEEDED" 
+	                    type="ERROR"
+	                    defaultText="Addition of ''{0}'' and ''{1}'' exceeded the maximum base 36 encoded value." 
+	                    description="Exceptions with this error code are thrown if the maximum value of a base 36 encoded value is exceeded."/>
+	
+	                <Message messageID="256" 
+	                    name="INVALID_BASE_36_DIGIT" 
+	                    type="ERROR"
+	                    defaultText="The passed character ''{0}'' does not match the pattern for base 36 digits. Legal digits are '0' - '9' and 'A' - 'Z'." 
+	                    description="Exceptions with this error code are thrown if an invalid value is used for a digit of a base 36 encoded number."/>
+	                    
+	        </MessageFolder>
+	
+	        <MessageFolder name="ConfigurationProvider" idRangeEnd="260" idRangeBegin="265">
+	            <Message messageID="260" 
+	                name="RESOURCE_NOT_FOUND" 
+	                traceLevel="ERROR" 
+	                type="ERROR" 
+	                defaultText="Unable to locate resource bundel ''{0}''."
+	                description="Messages with this message id are traced if an exception occurs when to open a resource bundle.">
+	            </Message>
+	
+	            <Message messageID="261" 
+	                name="FILE_NOT_FOUND" 
+	                traceLevel="ERROR" 
+	                type="ERROR" 
+	                defaultText="Unable to open file ''{0}''."
+	                description="Messages with this message id are traced if an exception occurs when to open a file as resource.">
+	            </Message>
+	        </MessageFolder>
+	</MessageFolder>
+</Root>

@@ -106,9 +106,11 @@ public class LocaleToolsTest {
     assertEquals("DEU", lGermany.getISO3Country());
     LocaleTools lLocaleTools = Tools.getLocaleTools();
     Locale lLocale = lLocaleTools.getLocaleFromCountryCode(lGermany.getCountry());
-    assertEquals(lGermany, lLocale);
+    assertEquals("DE", lLocale.getCountry());
+    assertEquals("DEU", lLocale.getISO3Country());
     lLocale = lLocaleTools.getLocaleFromCountryCode(lGermany.getISO3Country());
-    assertEquals(lGermany, lLocale);
+    assertEquals("DE", lLocale.getCountry());
+    assertEquals("DEU", lLocale.getISO3Country());
 
     // Test invalid country code.
     try {

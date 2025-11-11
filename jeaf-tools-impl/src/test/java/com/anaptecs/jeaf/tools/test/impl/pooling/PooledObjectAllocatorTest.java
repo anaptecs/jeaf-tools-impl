@@ -5,18 +5,16 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.pooling;
 
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
 import com.anaptecs.jeaf.tools.api.pooling.PooledObjectLifecycleManager;
 import com.anaptecs.jeaf.tools.impl.pooling.PooledObjectAllocator;
 import com.anaptecs.jeaf.tools.impl.pooling.PooledObjectWrapper;
-
+import org.junit.jupiter.api.Test;
 import stormpot.Slot;
 
 public class PooledObjectAllocatorTest {
@@ -31,12 +29,12 @@ public class PooledObjectAllocatorTest {
       }
 
       @Override
-      public void resetObject( List<String> pObject ) {
+      public void resetObject(List<String> pObject) {
         fail("Method must not be used in this context");
       }
 
       @Override
-      public void cleanup( List<String> pObject ) {
+      public void cleanup(List<String> pObject) {
         pObject.clear();
       }
 

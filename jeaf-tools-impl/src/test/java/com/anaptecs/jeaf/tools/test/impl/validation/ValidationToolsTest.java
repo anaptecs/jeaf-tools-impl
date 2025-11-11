@@ -5,11 +5,11 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.validation;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -50,13 +50,12 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
-import org.junit.jupiter.api.Test;
-
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.validation.ValidationResult;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.tools.impl.validation.JEAFMessageInterpolator;
 import com.anaptecs.jeaf.tools.test.impl.validation.ValidationTestObject.Builder;
+import org.junit.jupiter.api.Test;
 
 public class ValidationToolsTest {
   public static final String TEST_VALIDATION_MESSAGE_CODE =
@@ -148,16 +147,16 @@ public class ValidationToolsTest {
     assertEquals(21, lField.getAnnotations().length);
     Annotation[] lValidationAnnotations = lField.getAnnotations();
     for (Annotation lNext : lValidationAnnotations) {
-      assertTrue(lNext.annotationType().getName() + " is not a validation annotation.",
-          lValidationTools.isValidationAnnotation(lNext));
+      assertTrue(lValidationTools.isValidationAnnotation(lNext),
+          lNext.annotationType().getName() + " is not a validation annotation.");
     }
 
     lField = ValidationToolsTest.class.getDeclaredField("filedWithoutValidationAnnotations");
     assertEquals(1, lField.getAnnotations().length);
     Annotation[] lOtherAnnotations = lField.getAnnotations();
     for (Annotation lNext : lOtherAnnotations) {
-      assertFalse(lNext.annotationType().getName() + " is a validation annotation.",
-          lValidationTools.isValidationAnnotation(lNext));
+      assertFalse(lValidationTools.isValidationAnnotation(lNext),
+          lNext.annotationType().getName() + " is a validation annotation.");
     }
 
     assertFalse(lValidationTools.containsValidationAnnotation(lOtherAnnotations));
@@ -402,32 +401,32 @@ public class ValidationToolsTest {
 class ValidationTestServiceImpl implements ValidationTestService {
 
   @Override
-  public String validateInNOutput( String pString1, String pString2 ) {
+  public String validateInNOutput(String pString1, String pString2) {
     return null;
   }
 
   @Override
-  public String notValidOutput( String pString1, String pString2 ) {
+  public String notValidOutput(String pString1, String pString2) {
     return null;
   }
 
   @Override
-  public String validateOutputOnly( String pString1, String pString2 ) {
+  public String validateOutputOnly(String pString1, String pString2) {
     return null;
   }
 
   @Override
-  public String validateInputOnly( String pString1, int pInteger ) {
+  public String validateInputOnly(String pString1, int pInteger) {
     return null;
   }
 
   @Override
-  public String noMethodValidation( String pString1, boolean pBool ) {
+  public String noMethodValidation(String pString1, boolean pBool) {
     return null;
   }
 
   @Override
-  public void createValidationTestObject( ValidationTestObject pTestObject ) {
+  public void createValidationTestObject(ValidationTestObject pTestObject) {
   }
 
 }

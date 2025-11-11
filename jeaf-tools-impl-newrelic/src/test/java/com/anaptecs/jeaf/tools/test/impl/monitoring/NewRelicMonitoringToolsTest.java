@@ -5,16 +5,15 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.monitoring;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.monitoring.MonitoringToken;
 import com.anaptecs.jeaf.tools.api.monitoring.MonitoringTools;
 import com.anaptecs.jeaf.tools.impl.monitoring.NewRelicMonitoringToken;
 import com.anaptecs.jeaf.tools.impl.monitoring.NewRelicMonitoringToolsImpl;
+import org.junit.jupiter.api.Test;
 
 public class NewRelicMonitoringToolsTest {
   @Test

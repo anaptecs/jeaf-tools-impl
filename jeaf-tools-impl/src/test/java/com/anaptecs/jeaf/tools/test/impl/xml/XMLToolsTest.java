@@ -5,12 +5,12 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.xml;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -25,14 +25,6 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
 
 import com.anaptecs.jeaf.tools.annotations.XMLToolsConfig;
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -51,7 +43,13 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.info.JavaRelease;
 import com.anaptecs.jeaf.xfun.api.trace.TraceLevel;
-
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 import stormpot.Poolable;
 import stormpot.Slot;
 
@@ -749,12 +747,12 @@ class SlotImpl implements Slot {
   private boolean released = false;
 
   @Override
-  public void release( Poolable pObj ) {
+  public void release(Poolable pObj) {
     released = true;
   }
 
   @Override
-  public void expire( Poolable pObj ) {
+  public void expire(Poolable pObj) {
   }
 
   public boolean released( ) {

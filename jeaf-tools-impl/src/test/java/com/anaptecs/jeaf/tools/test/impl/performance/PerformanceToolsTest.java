@@ -5,13 +5,11 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.performance;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.performance.PerformanceTools;
@@ -19,6 +17,7 @@ import com.anaptecs.jeaf.tools.api.performance.Stopwatch;
 import com.anaptecs.jeaf.tools.api.performance.StopwatchResult;
 import com.anaptecs.jeaf.tools.api.performance.TimePrecision;
 import com.anaptecs.jeaf.tools.impl.performance.StopwatchImpl;
+import org.junit.jupiter.api.Test;
 
 public class PerformanceToolsTest {
   @Test

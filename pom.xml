@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.anaptecs.jeaf</groupId>
 		<artifactId>jeaf-module-project-parent</artifactId>
-		<version>1.8.0</version>
+		<version>1.9.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.anaptecs.jeaf.tools</groupId>
@@ -25,9 +25,17 @@
 	</scm>
 	
 	<properties>
-		<jeaf.x-fun.test-runtime.version>1.8.0</jeaf.x-fun.test-runtime.version>
-		<jeaf.tools.api.version>1.8.0</jeaf.tools.api.version>
+		<jeaf.x-fun.test-runtime.version>1.8.1-SNAPSHOT</jeaf.x-fun.test-runtime.version>
+		<jeaf.tools.api.version>1.8.1-SNAPSHOT</jeaf.tools.api.version>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 	<modules>
 		<module>jeaf-tools-impl</module>

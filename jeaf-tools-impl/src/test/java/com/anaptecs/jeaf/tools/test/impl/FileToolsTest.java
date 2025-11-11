@@ -1,15 +1,16 @@
 /*
  * anaptecs GmbH, Burgstr. 96, 72764 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2014 All rights reserved.
  */
 package com.anaptecs.jeaf.tools.test.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -29,11 +30,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-
 import com.anaptecs.jeaf.tools.api.ToolsMessages;
 import com.anaptecs.jeaf.tools.api.file.FileTools;
 import com.anaptecs.jeaf.tools.impl.file.ExtensionFileFilter;
@@ -42,12 +38,14 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Assert;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.info.OperatingSystem;
-
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 /**
  * Test class to test the functionality of class com.anaptecs.jeaf.fwk.util.Tools.
- * 
+ *
  * @author JEAF Development Team
  * @version 1.0
  */
@@ -67,7 +65,7 @@ public class FileToolsTest {
 
   /**
    * Method test coping of small files.
-   * 
+   *
    * @throws IOException Signals that an I/O exception has occurred.
    */
   @Test
@@ -86,13 +84,13 @@ public class FileToolsTest {
         FileInputStream lDestinationInputStream = new FileInputStream(lDestinationFileName);
         FileChannel lDestinationChannel = lDestinationInputStream.getChannel();) {
 
-      TestCase.assertEquals("File not completly written.", lSourceChannel.size(), lDestinationChannel.size());
+      assertEquals(lSourceChannel.size(), lDestinationChannel.size(), "File not completly written.");
     }
   }
 
   /**
    * Method test coping of small files.
-   * 
+   *
    * @throws IOException Signals that an I/O exception has occurred.
    */
   @Test
@@ -110,7 +108,7 @@ public class FileToolsTest {
         FileInputStream lDestinationInputStream = new FileInputStream(lDestinationFileName);
         FileChannel lDestinationChannel = lDestinationInputStream.getChannel();) {
 
-      TestCase.assertEquals("File not completly written.", lSourceChannel.size(), lDestinationChannel.size());
+      assertEquals(lSourceChannel.size(), lDestinationChannel.size(), "File not completly written.");
     }
 
     // Compare source and destination file byte by byte
@@ -119,8 +117,7 @@ public class FileToolsTest {
     byte[] lSourceContent = lFileTools.getFileContent(lSourceFileName);
 
     byte[] lDestinationContent = lFileTools.getFileContent(lDestinationFileName);
-    TestCase.assertTrue("Source and destination file are not the same",
-        Arrays.equals(lSourceContent, lDestinationContent));
+    assertTrue(Arrays.equals(lSourceContent, lDestinationContent), "Source and destination file are not the same");
 
     // Try to overwrite file.
     try {
@@ -143,6 +140,10 @@ public class FileToolsTest {
         lInvalidTarget = new File("/root/Invalid.txt");
         break;
 
+      case MAC:
+        lInvalidTarget = new File("/System/Invalid.txt");
+        break;
+
       default:
         lInvalidTarget = null;
         Assert.unexpectedEnumLiteral(lOperatingSystem);
@@ -158,7 +159,7 @@ public class FileToolsTest {
 
   /**
    * Method test coping of small files.
-   * 
+   *
    * @throws IOException Signals that an I/O exception has occurred.
    */
   @Test
@@ -176,19 +177,18 @@ public class FileToolsTest {
         FileInputStream lDestinationInputStream = new FileInputStream(lDestinationFileName);
         FileChannel lDestinationChannel = lDestinationInputStream.getChannel();) {
 
-      TestCase.assertEquals("File not completly written.", lSourceChannel.size(), lDestinationChannel.size());
+      assertEquals(lSourceChannel.size(), lDestinationChannel.size(), "File not completly written.");
     }
 
     // Compare source and destination file byte by byte
     byte[] lSourceContent = FileTools.getFileTools().getFileContent(lSourceFileName);
     byte[] lDestinationContent = FileTools.getFileTools().getFileContent(lDestinationFileName);
-    TestCase.assertTrue("Source and destination file are not the same",
-        Arrays.equals(lSourceContent, lDestinationContent));
+    assertTrue(Arrays.equals(lSourceContent, lDestinationContent), "Source and destination file are not the same");
   }
 
   /**
    * Method test coping of small files.
-   * 
+   *
    * @throws IOException Signals that an I/O exception has occurred.
    */
   @Test
@@ -206,14 +206,13 @@ public class FileToolsTest {
         FileInputStream lDestinationInputStream = new FileInputStream(lDestinationFileName);
         FileChannel lDestinationChannel = lDestinationInputStream.getChannel();) {
 
-      TestCase.assertEquals("File not completly written.", lSourceChannel.size(), lDestinationChannel.size());
+      assertEquals(lSourceChannel.size(), lDestinationChannel.size(), "File not completly written.");
     }
 
     // Compare source and destination file byte by byte
     byte[] lSourceContent = FileTools.getFileTools().getFileContent(lSourceFileName);
     byte[] lDestinationContent = FileTools.getFileTools().getFileContent(lDestinationFileName);
-    TestCase.assertTrue("Source and destination file are not the same",
-        Arrays.equals(lSourceContent, lDestinationContent));
+    assertTrue(Arrays.equals(lSourceContent, lDestinationContent), "Source and destination file are not the same");
   }
 
   @Test
@@ -280,7 +279,7 @@ public class FileToolsTest {
         99, 111, 110, 100, 32, 108, 105, 110, 101, 32, 111, 102, 32, 112, 108, 97, 105, 110, 32, 116, 101, 120, 116,
         46 };
     }
-    else if (lOperatingSystem == OperatingSystem.LINUX) {
+    else if (lOperatingSystem == OperatingSystem.LINUX || lOperatingSystem == OperatingSystem.MAC) {
       lExpectedBytes = new byte[] { 84, 104, 105, 115, 32, 105, 115, 32, 97, 32, 115, 105, 109, 112, 108, 101, 32, 102,
         105, 108, 101, 32, 119, 105, 116, 104, 32, 112, 108, 97, 105, 110, 32, 116, 101, 120, 116, 46, 10, 83, 101, 99,
         111, 110, 100, 32, 108, 105, 110, 101, 32, 111, 102, 32, 112, 108, 97, 105, 110, 32, 116, 101, 120, 116, 46 };
@@ -398,7 +397,7 @@ public class FileToolsTest {
       String lFileContentWindows = "This is a simple file with plain text.\r\nSecond line of plain text.";
       assertEquals(lFileContentWindows, lFileTools.getFileContentAsString(lDestinationFile));
     }
-    else if (lOperatingSystem == OperatingSystem.LINUX) {
+    else if (lOperatingSystem == OperatingSystem.LINUX || lOperatingSystem == OperatingSystem.MAC) {
       assertEquals(65, lBytesCopied);
       String lFileContentLinux = "This is a simple file with plain text.\nSecond line of plain text.";
       assertEquals(lFileContentLinux, lFileTools.getFileContentAsString(lDestinationFile));
@@ -490,7 +489,7 @@ public class FileToolsTest {
       String lFileContentWindows = "This is a simple file with plain text.\r\nSecond line of plain text.";
       assertEquals(lFileContentWindows, lFileTools.getFileContentAsString(lDestinationFile));
     }
-    else if (lOperatingSystem == OperatingSystem.LINUX) {
+    else if (lOperatingSystem == OperatingSystem.LINUX || lOperatingSystem == OperatingSystem.MAC) {
       assertEquals(65, lBytesCopied);
       String lFileContentLinux = "This is a simple file with plain text.\nSecond line of plain text.";
       assertEquals(lFileContentLinux, lFileTools.getFileContentAsString(lDestinationFile));
@@ -533,7 +532,7 @@ public class FileToolsTest {
       String lFileContentWindows = "This is a simple file with plain text.\r\nSecond line of plain text.";
       assertEquals(lFileContentWindows, lFileTools.getFileContentAsString(lDestinationFile));
     }
-    else if (lOperatingSystem == OperatingSystem.LINUX) {
+    else if (lOperatingSystem == OperatingSystem.LINUX || lOperatingSystem == OperatingSystem.MAC) {
       assertEquals(65, lBytesCopied);
       String lFileContentLinux = "This is a simple file with plain text.\nSecond line of plain text.";
       assertEquals(lFileContentLinux, lFileTools.getFileContentAsString(lDestinationFile));
@@ -570,7 +569,7 @@ public class FileToolsTest {
 
   /**
    * Test file deletion.
-   * 
+   *
    * @throws IOException Signals that an I/O exception has occurred.
    */
   @Test
@@ -584,88 +583,88 @@ public class FileToolsTest {
     FileTools lFileTools = FileTools.getFileTools();
     lFileTools.tryDeleteRecursive(lSubDirs, true);
 
-    TestCase.assertFalse("Subdirectory structure must not exist yet " + lSubDirs.getAbsolutePath(), lSubDirs.exists());
+    assertFalse(lSubDirs.exists(), "Subdirectory structure must not exist yet " + lSubDirs.getAbsolutePath());
     lSubDirs.mkdirs();
-    TestCase.assertTrue("Subdirectory structure was not created", lSubDirs.exists());
+    assertTrue(lSubDirs.exists(), "Subdirectory structure was not created");
 
     // Test single deletion.
     FileTools.getFileTools().tryDelete(lDestinationFileName);
     lFileTools.copyFile(lSourceFile, lDestinationFile);
-    TestCase.assertTrue("Test file does not exist.", lDestinationFile.exists());
+    assertTrue(lDestinationFile.exists(), "Test file does not exist.");
     lFileTools.delete(lDestinationFile);
-    TestCase.assertFalse("Test file does still exist.", lDestinationFile.exists());
+    assertFalse(lDestinationFile.exists(), "Test file does still exist.");
 
     lFileTools.copyFile(lSourceFile, lDestinationFile);
-    TestCase.assertTrue("Test file does not exist.", lDestinationFile.exists());
+    assertTrue(lDestinationFile.exists(), "Test file does not exist.");
     lFileTools.delete(lDestinationFile.getCanonicalPath());
-    TestCase.assertFalse("Test file does still exist.", lDestinationFile.exists());
+    assertFalse(lDestinationFile.exists(), "Test file does still exist.");
 
     lFileTools.copyFile(lSourceFile, lDestinationFile);
-    TestCase.assertTrue("Test file does not exist.", lDestinationFile.exists());
+    assertTrue(lDestinationFile.exists(), "Test file does not exist.");
     lFileTools.delete(lDestinationFile.toPath());
-    TestCase.assertFalse("Test file does still exist.", lDestinationFile.exists());
+    assertFalse(lDestinationFile.exists(), "Test file does still exist.");
 
     // Test try delete variants
     lFileTools.copyFile(lSourceFile, lDestinationFile);
-    TestCase.assertTrue("Test file does not exist.", lDestinationFile.exists());
+    assertTrue(lDestinationFile.exists(), "Test file does not exist.");
     boolean lDeleted = lFileTools.tryDelete(lDestinationFile);
     assertTrue(lDeleted);
-    TestCase.assertFalse("Test file does still exist.", lDestinationFile.exists());
+    assertFalse(lDestinationFile.exists(), "Test file does still exist.");
 
     lFileTools.copyFile(lSourceFile, lDestinationFile);
-    TestCase.assertTrue("Test file does not exist.", lDestinationFile.exists());
+    assertTrue(lDestinationFile.exists(), "Test file does not exist.");
     lDeleted = lFileTools.tryDelete(lDestinationFile.getAbsolutePath());
     assertTrue(lDeleted);
-    TestCase.assertFalse("Test file does still exist.", lDestinationFile.exists());
+    assertFalse(lDestinationFile.exists(), "Test file does still exist.");
 
     lFileTools.copyFile(lSourceFile, lDestinationFile);
-    TestCase.assertTrue("Test file does not exist.", lDestinationFile.exists());
+    assertTrue(lDestinationFile.exists(), "Test file does not exist.");
     lDeleted = lFileTools.tryDelete(lDestinationFile.toPath());
     assertTrue(lDeleted);
-    TestCase.assertFalse("Test file does still exist.", lDestinationFile.exists());
+    assertFalse(lDestinationFile.exists(), "Test file does still exist.");
 
     // Try to delete file a second time.
     try {
       lFileTools.delete(lDestinationFile);
-      TestCase.fail("Files can not be deleted more than once.");
+      fail("Files can not be deleted more than once.");
     }
     catch (JEAFSystemException e) {
-      TestCase.assertEquals("Wrong error code.", ToolsMessages.UNABLE_TO_DELETE_FILE, e.getErrorCode());
+      assertEquals(ToolsMessages.UNABLE_TO_DELETE_FILE, e.getErrorCode(), "Wrong error code.");
     }
 
     // Test deletion of not empty directory.
     try {
       lFileTools.delete(DESTINATION_DIRECTORY);
-      TestCase.fail("Non empty directory must not be deleted.");
+      fail("Non empty directory must not be deleted.");
     }
     catch (JEAFSystemException e) {
-      TestCase.assertEquals("Wrong error code.", ToolsMessages.UNABLE_TO_DELETE_FILE, e.getErrorCode());
+      assertEquals(ToolsMessages.UNABLE_TO_DELETE_FILE, e.getErrorCode(), "Wrong error code.");
     }
 
     // Test recursive deletion of directory.
     File lDestinationDir = new File(DESTINATION_DIRECTORY);
     lFileTools.deleteRecursive(lDestinationDir);
-    TestCase.assertFalse("Directory structure was not deleted.", lSubDirs.exists());
-    TestCase.assertFalse("Directory structure was not deleted.", lDestinationDir.exists());
+    assertFalse(lSubDirs.exists(), "Directory structure was not deleted.");
+    assertFalse(lDestinationDir.exists(), "Directory structure was not deleted.");
 
     // Test tryDelete methods
-    TestCase.assertFalse("Subdirectory structure must not exist yet " + lSubDirs.getAbsolutePath(), lSubDirs.exists());
+    assertFalse(lSubDirs.exists(), "Subdirectory structure must not exist yet " + lSubDirs.getAbsolutePath());
     lSubDirs.mkdirs();
-    TestCase.assertTrue("Subdirectory structure was not created", lSubDirs.exists());
+    assertTrue(lSubDirs.exists(), "Subdirectory structure was not created");
 
     // Test single deletion.
     lFileTools.copyFile(lSourceFile, lDestinationFile);
-    TestCase.assertTrue("Test file does not exist.", lDestinationFile.exists());
+    assertTrue(lDestinationFile.exists(), "Test file does not exist.");
     lFileTools.tryDelete(lDestinationFile);
-    TestCase.assertFalse("Test file does still exist.", lDestinationFile.exists());
+    assertFalse(lDestinationFile.exists(), "Test file does still exist.");
 
     // Try to delete file a second time.
     lDeleted = lFileTools.tryDelete(lDestinationFile);
-    TestCase.assertFalse("Files can not be deleted more than once.", lDeleted);
+    assertFalse(lDeleted, "Files can not be deleted more than once.");
 
     // Test deletion of not empty directory.
     lDeleted = lFileTools.tryDelete(DESTINATION_DIRECTORY);
-    TestCase.assertFalse("Non empty directory must not be deleted.", lDeleted);
+    assertFalse(lDeleted, "Non empty directory must not be deleted.");
 
     // Try to delete directory with an open file.
     lDestinationDir = new File(DESTINATION_DIRECTORY);
@@ -703,8 +702,8 @@ public class FileToolsTest {
 
     // Test recursive deletion of directory.
     lDeleted = lFileTools.tryDeleteRecursive(lDestinationDir, true);
-    TestCase.assertFalse("Directory structure was not deleted.", lSubDirs.exists());
-    TestCase.assertFalse("Directory structure was not deleted.", lDestinationDir.exists());
+    assertFalse(lSubDirs.exists(), "Directory structure was not deleted.");
+    assertFalse(lDestinationDir.exists(), "Directory structure was not deleted.");
 
     // Create test directory again
     File lExtractDir = new File(DESTINATION_DIRECTORY + "/zipTest");
@@ -729,28 +728,28 @@ public class FileToolsTest {
 
     // Test base name and extension detection
     String lFilename = "abc.docx";
-    TestCase.assertEquals("Wrong base name", "abc", lFileTools.getBaseName(lFilename));
-    TestCase.assertEquals("Wrong extension", "docx", lFileTools.getExtension(lFilename));
+    assertEquals("abc", lFileTools.getBaseName(lFilename), "Wrong base name");
+    assertEquals("docx", lFileTools.getExtension(lFilename), "Wrong extension");
 
     lFilename = "abc DCT.xls";
-    TestCase.assertEquals("Wrong base name", "abc DCT", lFileTools.getBaseName(lFilename));
-    TestCase.assertEquals("Wrong extension", "xls", lFileTools.getExtension(lFilename));
-    TestCase.assertEquals("Wrong base name", "abc DCT", lFileTools.getBaseName(new File(lFilename)));
-    TestCase.assertEquals("Wrong extension", "xls", lFileTools.getExtension(new File(lFilename)));
-    TestCase.assertEquals("Wrong base name", "abc DCT", lFileTools.getBaseName(new File(lFilename).toPath()));
-    TestCase.assertEquals("Wrong extension", "xls", lFileTools.getExtension(new File(lFilename).toPath()));
+    assertEquals("abc DCT", lFileTools.getBaseName(lFilename), "Wrong base name");
+    assertEquals("xls", lFileTools.getExtension(lFilename), "Wrong extension");
+    assertEquals("abc DCT", lFileTools.getBaseName(new File(lFilename)), "Wrong base name");
+    assertEquals("xls", lFileTools.getExtension(new File(lFilename)), "Wrong extension");
+    assertEquals("abc DCT", lFileTools.getBaseName(new File(lFilename).toPath()), "Wrong base name");
+    assertEquals("xls", lFileTools.getExtension(new File(lFilename).toPath()), "Wrong extension");
 
     lFilename = ".xls";
-    TestCase.assertNull("Wrong base name", lFileTools.getBaseName(lFilename));
-    TestCase.assertEquals("Wrong extension", "xls", lFileTools.getExtension(lFilename));
+    assertNull(lFileTools.getBaseName(lFilename), "Wrong base name");
+    assertEquals("xls", lFileTools.getExtension(lFilename), "Wrong extension");
 
     lFilename = "";
-    TestCase.assertNull("Wrong base name", lFileTools.getBaseName(lFilename));
-    TestCase.assertNull("Wrong extension", lFileTools.getExtension(lFilename));
+    assertNull(lFileTools.getBaseName(lFilename), "Wrong base name");
+    assertNull(lFileTools.getExtension(lFilename), "Wrong extension");
 
     lFilename = "abc.";
-    TestCase.assertEquals("Wrong base name", "abc", lFileTools.getBaseName(lFilename));
-    TestCase.assertNull("Wrong extension", lFileTools.getExtension(lFilename));
+    assertEquals("abc", lFileTools.getBaseName(lFilename), "Wrong base name");
+    assertNull(lFileTools.getExtension(lFilename), "Wrong extension");
   }
 
   @Test
@@ -813,49 +812,49 @@ public class FileToolsTest {
     File lDirectory = new File(".");
 
     FilenameFilter lFilter = new ExtensionFileFilter(lExtensions);
-    assertTrue("'My First Document.doc' not accepted.", lFilter.accept(lDirectory, "My First Document.doc"));
-    assertTrue("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.txt"));
-    assertTrue("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.docx"));
-    assertFalse("'Hello.dotx' not accepted.", lFilter.accept(lDirectory, "Hello.dotx"));
+    assertTrue(lFilter.accept(lDirectory, "My First Document.doc"), "'My First Document.doc' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello.txt"), "'Hello.txt' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello.docx"), "'Hello.txt' not accepted.");
+    assertFalse(lFilter.accept(lDirectory, "Hello.dotx"), "'Hello.dotx' not accepted.");
 
     FileTools lFileTools = FileTools.getFileTools();
     lFilter = lFileTools.createExtensionFilenameFilter(lExtensions);
-    assertTrue("'My First Document.doc' not accepted.", lFilter.accept(lDirectory, "My First Document.doc"));
-    assertTrue("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.txt"));
-    assertTrue("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.docx"));
-    assertFalse("'Hello.dotx' not accepted.", lFilter.accept(lDirectory, "Hello.dotx"));
+    assertTrue(lFilter.accept(lDirectory, "My First Document.doc"), "'My First Document.doc' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello.txt"), "'Hello.txt' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello.docx"), "'Hello.txt' not accepted.");
+    assertFalse(lFilter.accept(lDirectory, "Hello.dotx"), "'Hello.dotx' not accepted.");
 
     // Test exclusion list.
     List<String> lExclusions = new ArrayList<>();
     lExclusions.add("Hello.txt");
     lExclusions.add("Weird.docx");
     lFilter = new ExtensionFileFilter(lExtensions, lExclusions);
-    assertFalse("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.txt"));
-    assertTrue("'Hello1.txt' not accepted.", lFilter.accept(lDirectory, "Hello1.txt"));
-    assertTrue("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.docx"));
-    assertFalse("'Hello.dotx' not accepted.", lFilter.accept(lDirectory, "Hello"));
-    assertFalse("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Weird.docx"));
+    assertFalse(lFilter.accept(lDirectory, "Hello.txt"), "'Hello.txt' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello1.txt"), "'Hello1.txt' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello.docx"), "'Hello.txt' not accepted.");
+    assertFalse(lFilter.accept(lDirectory, "Hello"), "'Hello.dotx' not accepted.");
+    assertFalse(lFilter.accept(lDirectory, "Weird.docx"), "'Hello.txt' not accepted.");
 
     lFilter = lFileTools.createExtensionFilenameFilter(lExtensions, lExclusions);
-    assertFalse("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.txt"));
-    assertTrue("'Hello1.txt' not accepted.", lFilter.accept(lDirectory, "Hello1.txt"));
-    assertTrue("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.docx"));
-    assertFalse("'Hello.dotx' not accepted.", lFilter.accept(lDirectory, "Hello"));
-    assertFalse("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Weird.docx"));
+    assertFalse(lFilter.accept(lDirectory, "Hello.txt"), "'Hello.txt' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello1.txt"), "'Hello1.txt' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello.docx"), "'Hello.txt' not accepted.");
+    assertFalse(lFilter.accept(lDirectory, "Hello"), "'Hello.dotx' not accepted.");
+    assertFalse(lFilter.accept(lDirectory, "Weird.docx"), "'Hello.txt' not accepted.");
 
     // Test filter that accepts all extensions.
     lFilter = new ExtensionFileFilter(null);
-    assertTrue("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.txt"));
-    assertTrue("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.docx"));
-    assertTrue("'Hello.dotx' not accepted.", lFilter.accept(lDirectory, "windows.exe"));
-    assertTrue("'Hello.dotx' not accepted.", lFilter.accept(lDirectory, "Hello"));
+    assertTrue(lFilter.accept(lDirectory, "Hello.txt"), "'Hello.txt' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello.docx"), "'Hello.txt' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "windows.exe"), "'Hello.dotx' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello"), "'Hello.dotx' not accepted.");
 
     // Test empty filter.
     lFilter = new ExtensionFileFilter(new ArrayList<>());
-    assertTrue("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.txt"));
-    assertTrue("'Hello.txt' not accepted.", lFilter.accept(lDirectory, "Hello.docx"));
-    assertTrue("'Hello.dotx' not accepted.", lFilter.accept(lDirectory, "windows.exe"));
-    assertTrue("'Hello.dotx' not accepted.", lFilter.accept(lDirectory, "Hello"));
+    assertTrue(lFilter.accept(lDirectory, "Hello.txt"), "'Hello.txt' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello.docx"), "'Hello.txt' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "windows.exe"), "'Hello.dotx' not accepted.");
+    assertTrue(lFilter.accept(lDirectory, "Hello"), "'Hello.dotx' not accepted.");
 
     // Test error handling
     try {
@@ -897,12 +896,12 @@ public class FileToolsTest {
     lFileTools.tryDeleteRecursive(lWorkingDir, true);
     lWorkingDir.mkdirs();
 
-    assertTrue(lWorkingDir.getCanonicalPath() + " does not exist.", lWorkingDir.exists());
+    assertTrue(lWorkingDir.exists(), lWorkingDir.getCanonicalPath() + " does not exist.");
 
     File lZipFile = new File("./testdata/JEAF_Icons.zip");
     lFileTools.extractZipFile(lZipFile, lWorkingDir, Long.MAX_VALUE);
     File lRootDir = new File(lWorkingDir, "JEAF_Icons");
-    assertTrue(lRootDir.getCanonicalPath() + " does not exist.", lRootDir.exists());
+    assertTrue(lRootDir.exists(), lRootDir.getCanonicalPath() + " does not exist.");
 
     // List all files
     List<File> lFiles = lFileTools.listFiles(lRootDir);
@@ -1021,7 +1020,7 @@ public class FileToolsTest {
     lFileTools.tryDeleteRecursive(lWorkingDir, true);
     lWorkingDir.mkdirs();
 
-    assertTrue(lWorkingDir.getCanonicalPath() + " does not exist.", lWorkingDir.exists());
+    assertTrue(lWorkingDir.exists(), lWorkingDir.getCanonicalPath() + " does not exist.");
 
     File lZipFile = new File("./testdata/JEAF_Icons.zip");
     lFileTools.extractZipFile(lZipFile, lWorkingDir, Long.MAX_VALUE);
@@ -1070,11 +1069,14 @@ public class FileToolsTest {
       else if (lOperatingSystem == OperatingSystem.LINUX) {
         lRestrictedDirectory = new File("/root");
       }
+      else if (lOperatingSystem == OperatingSystem.MAC) {
+        lRestrictedDirectory = new File("/System");
+      }
       else {
         lRestrictedDirectory = null;
         fail("Unexpected operating system " + lOperatingSystem);
       }
-      assertTrue(lRestrictedDirectory.getCanonicalPath() + " does not exist.", lRestrictedDirectory.exists());
+      assertTrue(lRestrictedDirectory.exists(), lRestrictedDirectory.getCanonicalPath() + " does not exist.");
       lFileTools.calculateDirectorySize(lRestrictedDirectory);
       fail("Expecting exception when trying to calculate size of file instead of directory.");
     }
@@ -1219,11 +1221,14 @@ public class FileToolsTest {
     else if (lOperatingSystem == OperatingSystem.LINUX) {
       lRestrictedDirectory = new File("/root");
     }
+    else if (lOperatingSystem == OperatingSystem.MAC) {
+      lRestrictedDirectory = new File("/System");
+    }
     else {
       lRestrictedDirectory = null;
       fail("Unexpected operating system " + lOperatingSystem);
     }
-    assertTrue(lRestrictedDirectory.getCanonicalPath() + " does not exist.", lRestrictedDirectory.exists());
+    assertTrue(lRestrictedDirectory.exists(), lRestrictedDirectory.getCanonicalPath() + " does not exist.");
     try {
       lFileTools.createDirectory(new File(lRestrictedDirectory, "dir"));
     }

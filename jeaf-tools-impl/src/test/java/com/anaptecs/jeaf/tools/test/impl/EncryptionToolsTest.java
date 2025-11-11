@@ -5,13 +5,14 @@
  */
 package com.anaptecs.jeaf.tools.test.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -28,12 +29,6 @@ import java.util.Base64;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-
 import com.anaptecs.jeaf.tools.annotations.EncryptionToolsConfig;
 import com.anaptecs.jeaf.tools.api.ToolsMessages;
 import com.anaptecs.jeaf.tools.api.encryption.AESEncrypted;
@@ -43,8 +38,11 @@ import com.anaptecs.jeaf.tools.api.encryption.EncryptionTools;
 import com.anaptecs.jeaf.tools.impl.encryption.EncryptionToolsConfiguration;
 import com.anaptecs.jeaf.tools.impl.encryption.SecureTokenGenerator;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
-
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class EncryptionToolsTest {
@@ -76,23 +74,22 @@ public class EncryptionToolsTest {
 
     encryptedString = lEncryptionTools.encryptAES(testString, AESKeyLength.AES_128, DEFAULT_HASH_ITERATIONS);
 
-    TestCase.assertNotNull("The encrypted String must not be null", encryptedString);
-    TestCase.assertNotSame("The two Strings must not be the same.", testString, encryptedString);
-    TestCase.assertEquals("Encryption does not produce stable results.", "Y1v4mxFsoQvi8BNN7IRkyL3AFx24iD95z175T504HcM=",
-        encryptedString);
+    assertNotNull(encryptedString, "The encrypted String must not be null");
+    assertNotSame(testString, encryptedString, "The two Strings must not be the same.");
+    assertEquals("Y1v4mxFsoQvi8BNN7IRkyL3AFx24iD95z175T504HcM=", encryptedString,
+        "Encryption does not produce stable results.");
 
     encryptedString2 = lEncryptionTools.encryptAES(testString, AESKeyLength.AES_128, DEFAULT_HASH_ITERATIONS);
 
-    TestCase.assertNotNull("The encrypted String must not be null", encryptedString2);
-    TestCase.assertNotSame("The two Strings must not be the same.", testString, encryptedString2);
-    TestCase.assertEquals("The two Strings must not be the same.", encryptedString, encryptedString2);
+    assertNotNull(encryptedString2, "The encrypted String must not be null");
+    assertNotSame(testString, encryptedString2, "The two Strings must not be the same.");
+    assertEquals(encryptedString, encryptedString2, "The two Strings must not be the same.");
 
     // Try to encrypt null value
     String lEncryptedNull = lEncryptionTools.encryptAES(null, AESKeyLength.AES_128, DEFAULT_HASH_ITERATIONS);
-    TestCase.assertNull("The encrypted String must not be null", lEncryptedNull);
+    assertNull(lEncryptedNull, "The encrypted String must not be null");
     String lDecryptedNull = lEncryptionTools.decryptAES(lEncryptedNull, AESKeyLength.AES_128, DEFAULT_HASH_ITERATIONS);
-    TestCase.assertNull("The encrypted String must be null", lDecryptedNull);
-
+    assertNull(lDecryptedNull, "The encrypted String must be null");
   }
 
   /**
@@ -107,15 +104,15 @@ public class EncryptionToolsTest {
     String lDecryptedString =
         lEncryptionTools.decryptAES(encryptedString, AESKeyLength.AES_128, DEFAULT_HASH_ITERATIONS);
 
-    TestCase.assertNotNull("The encrypted String must not be null", lDecryptedString);
-    TestCase.assertEquals("The two Strings must be the same.", testString, lDecryptedString);
+    assertNotNull(lDecryptedString, "The encrypted String must not be null");
+    assertEquals(testString, lDecryptedString, "The two Strings must be the same.");
 
     String lDecryptedString2 =
         lEncryptionTools.decryptAES(encryptedString2, AESKeyLength.AES_128, DEFAULT_HASH_ITERATIONS);
 
-    TestCase.assertNotNull("The encrypted String must not be null", lDecryptedString2);
-    TestCase.assertEquals("The two Strings must be the same.", testString, lDecryptedString2);
-    TestCase.assertEquals("The two Strings must be the same.", lDecryptedString, lDecryptedString2);
+    assertNotNull(lDecryptedString2, "The encrypted String must not be null");
+    assertEquals(testString, lDecryptedString2, "The two Strings must be the same.");
+    assertEquals(lDecryptedString, lDecryptedString2, "The two Strings must be the same.");
   }
 
   @Test
@@ -138,29 +135,28 @@ public class EncryptionToolsTest {
 
     // Encrypt using AES and check result
     AESEncrypted lEncrypted = lEncryptionTools.encrypt(lPlainText, lSecretKey);
-    TestCase.assertNotNull("Encryption result expected.", lEncrypted);
+    assertNotNull(lEncrypted, "Encryption result expected.");
     byte[] lPlainBytes = lPlainText.getBytes();
     byte[] lCipherTextBytes = lEncrypted.getCipherText();
-    TestCase.assertFalse("Plain text and encrypted text must not be the same",
-        Arrays.equals(lPlainBytes, lCipherTextBytes));
-    TestCase.assertNotNull("IV missing.", lEncrypted.getIV());
+    assertFalse(Arrays.equals(lPlainBytes, lCipherTextBytes), "Plain text and encrypted text must not be the same");
+    assertNotNull(lEncrypted.getIV(), "IV missing.");
 
     // Test string conversions
     AESEncrypted lNewCipher = new AESEncrypted(lEncrypted.getIVAsString(), lEncrypted.getCipherTextAsString());
-    TestCase.assertTrue("Error in IV string conversion.", Arrays.equals(lEncrypted.getIV(), lNewCipher.getIV()));
-    TestCase.assertTrue("Error in cipher text string conversion.",
-        Arrays.equals(lEncrypted.getCipherText(), lNewCipher.getCipherText()));
+    assertTrue(Arrays.equals(lEncrypted.getIV(), lNewCipher.getIV()), "Error in IV string conversion.");
+    assertTrue(Arrays.equals(lEncrypted.getCipherText(), lNewCipher.getCipherText()),
+        "Error in cipher text string conversion.");
 
     // Test decryption
     String lDecryptResult = lEncryptionTools.decrypt(lEncrypted, lSecretKey);
-    TestCase.assertEquals("Decrypted string is not equal to plain text.", lPlainText, lDecryptResult);
+    assertEquals(lPlainText, lDecryptResult, "Decrypted string is not equal to plain text.");
 
     // Test encryption of null
     lEncrypted = lEncryptionTools.encrypt(null, lSecretKey);
-    TestCase.assertNull("Cipher text must be null.", lEncrypted.getCipherText());
-    TestCase.assertNull("IV must be null.", lEncrypted.getIV());
+    assertNull(lEncrypted.getCipherText(), "Cipher text must be null.");
+    assertNull(lEncrypted.getIV(), "IV must be null.");
     String lDecryptedText = lEncryptionTools.decrypt(lEncrypted, lSecretKey);
-    TestCase.assertNull("Decrypted string is not equal to plain text.", lDecryptedText);
+    assertNull(lDecryptedText, "Decrypted string is not equal to plain text.");
 
     // Test encryption with invalid key.
     AESSecretKey lInvalidSecretKey = new AESSecretKey(new InvalidSecretKey());
@@ -216,7 +212,7 @@ public class EncryptionToolsTest {
     this.testAESPerformance(AESKeyLength.AES_256, 10000);
   }
 
-  private void testAESPerformance( AESKeyLength pKeyLength, int pIterations ) {
+  private void testAESPerformance(AESKeyLength pKeyLength, int pIterations) {
     String lKey = "ThisIsMyVeryPrivateKey";
     String lSalt = "Salt and Pepper?";
     String lHashAlgorithm = EncryptionTools.PBKDF2_WITH_HMAC_SHA1;
@@ -228,13 +224,13 @@ public class EncryptionToolsTest {
     // Encrypt using AES and check result
     for (int i = 0; i < LOOPS; i++) {
       AESEncrypted lCipher = lEncryptionTools.encrypt(lPlainText, lSecretKey);
-      TestCase.assertNotNull("Encryption result expected.", lCipher);
-      TestCase.assertFalse("Plain text and encrypted text must not be the same",
-          Arrays.equals(lPlainText.getBytes(), lCipher.getCipherText()));
-      TestCase.assertNotNull("IV missing.", lCipher.getIV());
+      assertNotNull(lCipher, "Encryption result expected.");
+      assertFalse(Arrays.equals(lPlainText.getBytes(), lCipher.getCipherText()),
+          "Plain text and encrypted text must not be the same");
+      assertNotNull(lCipher.getIV(), "IV missing.");
 
       String lDecryptResult = lEncryptionTools.decrypt(lCipher, lSecretKey);
-      TestCase.assertEquals("Decrypted string is not equal to plain text.", lPlainText, lDecryptResult);
+      assertEquals(lPlainText, lDecryptResult, "Decrypted string is not equal to plain text.");
     }
   }
 
@@ -267,21 +263,21 @@ public class EncryptionToolsTest {
     publicKey = lEncryptionTools.createRSAPublicKey(lPublicKeyBytes);
     privateKey = lEncryptionTools.createRSAPrivateKey(lPrivateKeyBytes);
 
-    TestCase.assertEquals("Conversion generated wrong public key.", lKeyPair.getPublic(), publicKey);
-    TestCase.assertEquals("Conversion generated wrong private key.", lKeyPair.getPrivate(), privateKey);
+    assertEquals(lKeyPair.getPublic(), publicKey, "Conversion generated wrong public key.");
+    assertEquals(lKeyPair.getPrivate(), privateKey, "Conversion generated wrong private key.");
 
     // Try to encrypt some text and afterwards decrypt it again.
     byte[] lBytes = new byte[] { 0, 1, 2, 3, 4 };
     byte[] lEncryptedBytes = lEncryptionTools.encryptRSA(lBytes, publicKey);
     byte[] lDecryptedBytes = lEncryptionTools.decryptRSA(lEncryptedBytes, privateKey);
-    TestCase.assertTrue("Error after encryption roundtrip.", Arrays.equals(lBytes, lDecryptedBytes));
+    assertTrue(Arrays.equals(lBytes, lDecryptedBytes), "Error after encryption roundtrip.");
 
     String lContent = "Hello World of RSA encryption!";
     Charset lEncoding = StandardCharsets.UTF_8;
     byte[] lContentBytes = lContent.getBytes(lEncoding);
     byte[] lEncryptedContent = lEncryptionTools.encryptRSA(lContentBytes, publicKey);
     byte[] lDecryptedContent = lEncryptionTools.decryptRSA(lEncryptedContent, privateKey);
-    TestCase.assertEquals("Error after encryption roundtrip.", lContent, new String(lDecryptedContent, lEncoding));
+    assertEquals(lContent, new String(lDecryptedContent, lEncoding), "Error after encryption roundtrip.");
 
     // Check length constraints.
     lBytes = new byte[446];
@@ -290,10 +286,10 @@ public class EncryptionToolsTest {
     lBytes = new byte[447];
     try {
       lEncryptionTools.encryptRSA(lBytes, publicKey);
-      TestCase.fail("Invalid content length not detected.");
+      fail("Invalid content length not detected.");
     }
     catch (JEAFSystemException e) {
-      TestCase.assertEquals("Wrong error code.", ToolsMessages.RSA_MAX_MESSAGE_SIZE_EXCEEDED, e.getErrorCode());
+      assertEquals(ToolsMessages.RSA_MAX_MESSAGE_SIZE_EXCEEDED, e.getErrorCode(), "Wrong error code.");
     }
 
     // Try to encrypt with invalid public key
@@ -377,7 +373,7 @@ public class EncryptionToolsTest {
     for (int i = 0; i < LOOPS; i++) {
       KeyPair lKeyPair = lEncryptionTools.generateRSAKeyPair(4096);
       System.out
-          .println("Key " + i + " created: " + Base64.getEncoder().encodeToString((lKeyPair.getPublic().getEncoded())));
+          .println("Key " + i + " created: " + Base64.getEncoder().encodeToString(lKeyPair.getPublic().getEncoded()));
     }
   }
 

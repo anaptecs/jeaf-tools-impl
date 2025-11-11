@@ -5,14 +5,12 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.pooling;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Calendar;
-
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.tools.api.ToolsMessages;
 import com.anaptecs.jeaf.tools.api.pooling.PoolConfiguration;
@@ -22,6 +20,7 @@ import com.anaptecs.jeaf.tools.api.pooling.PooledObject;
 import com.anaptecs.jeaf.tools.api.pooling.PooledObjectLifecycleManager;
 import com.anaptecs.jeaf.tools.impl.pooling.PoolImpl;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
+import org.junit.jupiter.api.Test;
 
 public class PoolImplTest {
   static int creationCounter;
@@ -37,12 +36,12 @@ public class PoolImplTest {
       }
 
       @Override
-      public void resetObject( Calendar pObject ) {
+      public void resetObject(Calendar pObject) {
         pObject.clear();
       }
 
       @Override
-      public void cleanup( Calendar Object ) {
+      public void cleanup(Calendar Object) {
       }
     };
 
@@ -111,12 +110,12 @@ public class PoolImplTest {
       }
 
       @Override
-      public void resetObject( Calendar pObject ) {
+      public void resetObject(Calendar pObject) {
         pObject.clear();
       }
 
       @Override
-      public void cleanup( Calendar Object ) {
+      public void cleanup(Calendar Object) {
       }
     };
 
@@ -184,11 +183,11 @@ public class PoolImplTest {
       }
 
       @Override
-      public void resetObject( Calendar pObject ) {
+      public void resetObject(Calendar pObject) {
       }
 
       @Override
-      public void cleanup( Calendar Object ) {
+      public void cleanup(Calendar Object) {
         fail("Method must not be used in this context");
       }
     };

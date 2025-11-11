@@ -5,19 +5,18 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.serialization;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
-
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.ToolsMessages;
 import com.anaptecs.jeaf.tools.api.serialization.SerializationTools;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
+import org.junit.jupiter.api.Test;
 
 public class SerializationToolsTest {
   static byte[] OBJECT = new byte[] { -84, -19, 0, 5, 115, 114, 0, 49, 99, 111, 109, 46, 97, 110, 97, 112, 116, 101, 99,

@@ -5,18 +5,16 @@
  */
 package com.anaptecs.jeaf.tools.test.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 import java.util.Map;
 
 import javax.net.ssl.SSLException;
-
-import org.jsoup.HttpStatusException;
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.ToolsMessages;
@@ -28,8 +26,8 @@ import com.anaptecs.jeaf.tools.api.http.XFrameOptions;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.info.JavaRelease;
-
-import junit.framework.TestCase;
+import org.jsoup.HttpStatusException;
+import org.junit.jupiter.api.Test;
 
 public class WebToolsTest {
   @Test
@@ -40,19 +38,19 @@ public class WebToolsTest {
     int lTimeout = 5000;
     WebsiteInfo lWebsiteInfo = lWebTools.lookupWebsiteInfo("https://www.heise.de", lTimeout, true, false);
 
-    assertEquals("heise online - IT-News, Nachrichten und Hintergründe", lWebsiteInfo.getTitle());
+    assertEquals("heise online - IT-News, Nachrichten und Hintergründe | heise online", lWebsiteInfo.getTitle());
     assertEquals("https://www.heise.de", lWebsiteInfo.getLocation());
     assertEquals(HTTPStatusCode.OK, lWebsiteInfo.getStatusCode());
     assertEquals(XFrameOptions.DENY, lWebsiteInfo.getXFrameOptions());
 
     Map<String, String> lHeaders = lWebsiteInfo.getHeaders();
-    assertEquals("text/html; charset=UTF-8", lHeaders.get("Content-Type"));
+    assertEquals("text/html; charset=utf-8", lHeaders.get("Content-Type"));
     Map<String, String> lCookies = lWebsiteInfo.getCookies();
     assertEquals(0, lCookies.size());
 
     // Execute request without checking SSL certificates.
     lWebsiteInfo = lWebTools.lookupWebsiteInfo("http://www.heise.de", lTimeout, true, true);
-    assertEquals("heise online - IT-News, Nachrichten und Hintergründe", lWebsiteInfo.getTitle());
+    assertEquals("heise online - IT-News, Nachrichten und Hintergründe | heise online", lWebsiteInfo.getTitle());
     assertEquals("https://www.heise.de/", lWebsiteInfo.getLocation());
     assertEquals(HTTPStatusCode.OK, lWebsiteInfo.getStatusCode());
     assertEquals(XFrameOptions.DENY, lWebsiteInfo.getXFrameOptions());
@@ -103,15 +101,15 @@ public class WebToolsTest {
     URLDetails lURLDetails = Tools.getWebTools().getURLDetails(lURLString);
 
     // Check standard info
-    TestCase.assertEquals("Wrong protocol", "https", lURLDetails.getProtocol());
-    TestCase.assertEquals("Wrong host", "FFC-powerpoint.officeapps.live.com", lURLDetails.getHost());
-    TestCase.assertEquals("Wrong port", 443, lURLDetails.getPort());
-    TestCase.assertEquals("Wrong path", "/p/PowerPointFrame.aspx", lURLDetails.getPath());
-    TestCase.assertEquals("Wrong query",
+    assertEquals("https", lURLDetails.getProtocol(), "Wrong protocol");
+    assertEquals("FFC-powerpoint.officeapps.live.com", lURLDetails.getHost(), "Wrong host");
+    assertEquals(443, lURLDetails.getPort(), "Wrong port");
+    assertEquals("/p/PowerPointFrame.aspx", lURLDetails.getPath(), "Wrong path");
+    assertEquals(
         "WOPISrc=http%3A%2F%2Flocalhost%3A8080%2Fweeasy%2F1.3%2Fdesktop%2Fwopi%2Ffiles%2F1-----B-----N5-&New=1&rs=de-DE&ui=de-DE&IsLicensedUser=0&PowerPointView=EditView",
-        lURLDetails.getQuery());
-    TestCase.assertEquals("Wrong URL", lURLString, lURLDetails.getURLAsString());
-    TestCase.assertNotNull("URL object not returned", lURLDetails.getURL());
+        lURLDetails.getQuery(), "Wrong query");
+    assertEquals(lURLString, lURLDetails.getURLAsString(), "Wrong URL");
+    assertNotNull(lURLDetails.getURL(), "URL object not returned");
   }
 
   @Test

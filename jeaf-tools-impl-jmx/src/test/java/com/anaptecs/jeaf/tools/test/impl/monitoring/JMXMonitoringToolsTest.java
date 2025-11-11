@@ -5,8 +5,8 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.monitoring;
 
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
@@ -15,8 +15,6 @@ import java.util.List;
 import javax.management.JMException;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
-
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.tools.annotations.MonitoringToolsConfig;
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -30,6 +28,7 @@ import com.anaptecs.jeaf.tools.impl.monitoring.jmx.JMXMeterRegistryFactory;
 import com.anaptecs.jeaf.tools.impl.monitoring.jmx.ObjectNameFactoryImpl;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
+import org.junit.jupiter.api.Test;
 
 @MonitoringToolsConfig(meterRegistryFactory = JMXMeterRegistryFactory.class)
 public class JMXMonitoringToolsTest {

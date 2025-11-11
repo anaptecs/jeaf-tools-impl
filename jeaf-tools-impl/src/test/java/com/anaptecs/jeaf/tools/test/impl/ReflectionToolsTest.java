@@ -5,18 +5,16 @@
  */
 package com.anaptecs.jeaf.tools.test.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.ToolsMessages;
@@ -31,8 +29,7 @@ import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.errorhandling.SystemException;
-
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
 public class ReflectionToolsTest {
 
@@ -43,8 +40,8 @@ public class ReflectionToolsTest {
   public void testNewInstance( ) {
     // Test valid variations.
     ReflectionTools lReflectionTools = Tools.getReflectionTools();
-    TestCase.assertNotNull(lReflectionTools.newInstance(String.class));
-    TestCase.assertNotNull(lReflectionTools.newInstance(Vector.class));
+    assertNotNull(lReflectionTools.newInstance(String.class));
+    assertNotNull(lReflectionTools.newInstance(Vector.class));
 
     // Test invalid variations.
     ErrorCode lErrorCode = ToolsMessages.UNABLE_TO_CREATE_NEW_INSTANCE;
@@ -52,23 +49,23 @@ public class ReflectionToolsTest {
     // Class with no public empty constructor.
     try {
       lReflectionTools.newInstance(List.class);
-      TestCase.fail("Expected SystemException to be thrown.");
+      fail("Expected SystemException to be thrown.");
     }
     catch (SystemException e) {
-      TestCase.assertEquals("Exception has wrong ErrorCode", lErrorCode, e.getErrorCode());
+      assertEquals(lErrorCode, e.getErrorCode(), "Exception has wrong ErrorCode");
     }
     // Class object of primitive type.
     try {
       lReflectionTools.newInstance(Boolean.TYPE);
-      TestCase.fail("Expected SystemException to be thrown.");
+      fail("Expected SystemException to be thrown.");
     }
     catch (SystemException e) {
-      TestCase.assertEquals("Exception has wrong ErrorCode", lErrorCode, e.getErrorCode());
+      assertEquals(lErrorCode, e.getErrorCode(), "Exception has wrong ErrorCode");
     }
     // Passed class object is null.
     try {
       lReflectionTools.newInstance(null);
-      TestCase.fail("Expected InvalidParameterException to be thrown.");
+      fail("Expected InvalidParameterException to be thrown.");
     }
     catch (IllegalArgumentException e) {
       // No special checks needed.
@@ -77,7 +74,7 @@ public class ReflectionToolsTest {
     // Create instance of abstract class
     try {
       lReflectionTools.newInstance(AbstractClass.class.getName(), AbstractClass.class);
-      TestCase.fail("Expected Exception to be thrown.");
+      fail("Expected Exception to be thrown.");
     }
     catch (JEAFSystemException e) {
       assertEquals(ToolsMessages.UNABLE_TO_CREATE_NEW_INSTANCE, e.getErrorCode());
@@ -92,7 +89,7 @@ public class ReflectionToolsTest {
 
     try {
       lReflectionTools.newInstance(ArrayList.class, Map.class);
-      TestCase.fail("Expected Exception to be thrown.");
+      fail("Expected Exception to be thrown.");
     }
     catch (JEAFSystemException e) {
       assertEquals(ToolsMessages.CLASS_NOT_ASSIGNABLE, e.getErrorCode());
@@ -163,11 +160,11 @@ public class ReflectionToolsTest {
     lClasses.add(TestClass1.class);
     Map<Class<?>, com.anaptecs.jeaf.tools.test.impl.reflect.TestAnnotation> lMap =
         lReflectionTools.getAnnotations(lClasses, TestAnnotation.class);
-    TestCase.assertEquals(3, lMap.size());
-    TestCase.assertTrue("Class 'TestClass2' missing.", lMap.containsKey(TestClass2.class));
-    TestCase.assertTrue("Class 'TestClass1' missing.", lMap.containsKey(TestClass1.class));
-    TestCase.assertTrue("Class 'TestInterface1' missing.", lMap.containsKey(TestInterface1.class));
-    TestCase.assertFalse("Class 'TestInterface1' missing.", lMap.containsKey(String.class));
+    assertEquals(3, lMap.size());
+    assertTrue(lMap.containsKey(TestClass2.class), "Class 'TestClass2' missing.");
+    assertTrue(lMap.containsKey(TestClass1.class), "Class 'TestClass1' missing.");
+    assertTrue(lMap.containsKey(TestInterface1.class), "Class 'TestInterface1' missing.");
+    assertFalse(lMap.containsKey(String.class), "Class 'TestInterface1' missing.");
 
     // Test error handling.
     try {

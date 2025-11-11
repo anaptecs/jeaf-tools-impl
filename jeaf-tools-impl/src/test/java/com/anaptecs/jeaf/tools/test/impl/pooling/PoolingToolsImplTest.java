@@ -5,13 +5,11 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.pooling;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Calendar;
-
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.tools.api.pooling.Pool;
 import com.anaptecs.jeaf.tools.api.pooling.PoolConfiguration;
@@ -19,6 +17,7 @@ import com.anaptecs.jeaf.tools.api.pooling.PooledObject;
 import com.anaptecs.jeaf.tools.api.pooling.PooledObjectLifecycleManager;
 import com.anaptecs.jeaf.tools.api.pooling.PoolingTools;
 import com.anaptecs.jeaf.tools.impl.pooling.PoolingToolsImpl;
+import org.junit.jupiter.api.Test;
 
 public class PoolingToolsImplTest {
   @Test
@@ -32,12 +31,12 @@ public class PoolingToolsImplTest {
       }
 
       @Override
-      public void resetObject( Calendar pObject ) {
+      public void resetObject(Calendar pObject) {
         pObject.clear();
       }
 
       @Override
-      public void cleanup( Calendar Object ) {
+      public void cleanup(Calendar Object) {
       }
     };
 
@@ -91,12 +90,12 @@ public class PoolingToolsImplTest {
       }
 
       @Override
-      public void resetObject( Calendar pObject ) {
+      public void resetObject(Calendar pObject) {
         pObject.clear();
       }
 
       @Override
-      public void cleanup( Calendar Object ) {
+      public void cleanup(Calendar Object) {
       }
     };
 

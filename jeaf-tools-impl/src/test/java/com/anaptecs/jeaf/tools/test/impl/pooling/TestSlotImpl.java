@@ -5,7 +5,7 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.pooling;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import stormpot.Poolable;
 import stormpot.Slot;
@@ -14,12 +14,12 @@ public class TestSlotImpl implements Slot {
   public boolean released = false;
 
   @Override
-  public void release( Poolable pObject ) {
+  public void release(Poolable pObject) {
     assertNotNull(pObject);
     released = true;
   }
 
   @Override
-  public void expire( Poolable pObj ) {
+  public void expire(Poolable pObj) {
   }
 }

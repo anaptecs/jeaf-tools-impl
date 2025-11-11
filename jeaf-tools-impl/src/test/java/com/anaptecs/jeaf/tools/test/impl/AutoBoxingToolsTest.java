@@ -5,23 +5,22 @@
  */
 package com.anaptecs.jeaf.tools.test.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
 
+import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.lang.AutoBoxingTools;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-
-import com.anaptecs.jeaf.tools.api.Tools;
-import com.anaptecs.jeaf.tools.api.lang.AutoBoxingTools;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AutoBoxingToolsTest {
@@ -200,12 +199,12 @@ public class AutoBoxingToolsTest {
     assertNotNull(lTools, "AutoBoxingTools not available.");
 
     // Test auto boxing from primitive to wrapper
-    assertEquals(Long.valueOf((long) 333333333), lTools.autoBox((long) 333333333));
-    assertNotEquals(Long.valueOf((long) 33), lTools.autoBox((long) 42));
+    assertEquals(Long.valueOf(333333333), lTools.autoBox((long) 333333333));
+    assertNotEquals(Long.valueOf(33), lTools.autoBox((long) 42));
 
     // Test auto boxing from wrapper to primitive
-    assertEquals(1, lTools.autoBox(Long.valueOf((long) 1)));
-    assertEquals(47, lTools.autoBox(Long.valueOf((long) 47)));
+    assertEquals(1, lTools.autoBox(Long.valueOf(1)));
+    assertEquals(47, lTools.autoBox(Long.valueOf(47)));
 
     try {
       lTools.autoBox((Long) null);
@@ -216,20 +215,20 @@ public class AutoBoxingToolsTest {
     }
 
     // Test auto boxing from wrapper to primitive (handling of null values)
-    assertEquals((long) 6, lTools.autoBox((Long) null, (long) 6));
-    assertEquals((long) -99, lTools.autoBox((Long) null, (long) -99));
-    assertEquals((long) 33, lTools.autoBox(Long.valueOf((long) 33), (long) -99));
+    assertEquals(6, lTools.autoBox((Long) null, 6));
+    assertEquals(-99, lTools.autoBox((Long) null, -99));
+    assertEquals(33, lTools.autoBox(Long.valueOf(33), -99));
 
     // Test auto boxing of wrapper arrays to primitives
-    Long[] lWrapperArray = new Long[] { Long.valueOf((long) 12), Long.valueOf((long) -1), Long.valueOf((long) 22) };
+    Long[] lWrapperArray = new Long[] { Long.valueOf(12), Long.valueOf(-1), Long.valueOf(22) };
     long[] lExpectedPrimitiveArray = new long[] { 12, -1, 22 };
     assertTrue(Arrays.equals(lExpectedPrimitiveArray, lTools.autoBox(lWrapperArray)));
     assertNull(lTools.autoBox((Long[]) null));
 
     // Test auto boxing of primitive arrays to wrappers
     long[] lPrimitiveArray = new long[] { -7, 22, 33, 44, 11 };
-    Long[] lExpectedWrapperArray = new Long[] { Long.valueOf((long) -7), Long.valueOf((long) 22),
-      Long.valueOf((long) 33), Long.valueOf((long) 44), Long.valueOf((long) 11) };
+    Long[] lExpectedWrapperArray = new Long[] { Long.valueOf(-7), Long.valueOf(22),
+      Long.valueOf(33), Long.valueOf(44), Long.valueOf(11) };
     assertTrue(Arrays.equals(lExpectedWrapperArray, lTools.autoBox(lPrimitiveArray)));
     assertNull(lTools.autoBox((long[]) null));
   }
@@ -243,7 +242,7 @@ public class AutoBoxingToolsTest {
 
     // Test auto boxing from primitive to wrapper
     assertEquals(Float.valueOf((float) 33333.3333), lTools.autoBox((float) 33333.3333));
-    assertNotEquals(Float.valueOf((float) 33), lTools.autoBox((float) 4.2));
+    assertNotEquals(Float.valueOf(33), lTools.autoBox((float) 4.2));
 
     // Test auto boxing from wrapper to primitive
     assertEquals((float) 1.11, lTools.autoBox(Float.valueOf((float) 1.11)));
@@ -260,7 +259,7 @@ public class AutoBoxingToolsTest {
     // Test auto boxing from wrapper to primitive (handling of null values)
     assertEquals((float) 6.97, lTools.autoBox((Float) null, (float) 6.97));
     assertEquals((float) -99.1, lTools.autoBox((Float) null, (float) -99.1));
-    assertEquals((float) 33, lTools.autoBox(Float.valueOf((float) 33), (float) -99));
+    assertEquals(33, lTools.autoBox(Float.valueOf(33), -99));
 
     // Test auto boxing of wrapper arrays to primitives
     Float[] lWrapperArray =
@@ -271,8 +270,8 @@ public class AutoBoxingToolsTest {
 
     // Test auto boxing of primitive arrays to wrappers
     float[] lPrimitiveArray = new float[] { -7, 22, 33, 44, 11 };
-    Float[] lExpectedWrapperArray = new Float[] { Float.valueOf((float) -7), Float.valueOf((float) 22),
-      Float.valueOf((float) 33), Float.valueOf((float) 44), Float.valueOf((float) 11) };
+    Float[] lExpectedWrapperArray = new Float[] { Float.valueOf(-7), Float.valueOf(22),
+      Float.valueOf(33), Float.valueOf(44), Float.valueOf(11) };
     assertTrue(Arrays.equals(lExpectedWrapperArray, lTools.autoBox(lPrimitiveArray)));
     assertNull(lTools.autoBox((float[]) null));
   }
@@ -285,12 +284,12 @@ public class AutoBoxingToolsTest {
     assertNotNull(lTools, "AutoBoxingTools not available.");
 
     // Test auto boxing from primitive to wrapper
-    assertEquals(Double.valueOf((double) 33333.3333), lTools.autoBox((double) 33333.3333));
-    assertNotEquals(Double.valueOf((double) 33), lTools.autoBox((double) 4.2));
+    assertEquals(Double.valueOf(33333.3333), lTools.autoBox(33333.3333));
+    assertNotEquals(Double.valueOf(33), lTools.autoBox(4.2));
 
     // Test auto boxing from wrapper to primitive
-    assertEquals((double) 1.11, lTools.autoBox(Double.valueOf((double) 1.11)));
-    assertEquals(47.0, lTools.autoBox(Double.valueOf((double) 47.0)));
+    assertEquals(1.11, lTools.autoBox(Double.valueOf(1.11)));
+    assertEquals(47.0, lTools.autoBox(Double.valueOf(47.0)));
 
     try {
       lTools.autoBox((Double) null);
@@ -301,21 +300,21 @@ public class AutoBoxingToolsTest {
     }
 
     // Test auto boxing from wrapper to primitive (handling of null values)
-    assertEquals((double) 6.97, lTools.autoBox((Double) null, (double) 6.97));
-    assertEquals((double) -99.1, lTools.autoBox((Double) null, (double) -99.1));
-    assertEquals((double) 33, lTools.autoBox(Double.valueOf((double) 33), (double) -99));
+    assertEquals(6.97, lTools.autoBox((Double) null, 6.97));
+    assertEquals(-99.1, lTools.autoBox((Double) null, -99.1));
+    assertEquals(33, lTools.autoBox(Double.valueOf(33), -99));
 
     // Test auto boxing of wrapper arrays to primitives
     Double[] lWrapperArray =
-        new Double[] { Double.valueOf((double) 12.0), Double.valueOf((double) -1.9), Double.valueOf((double) -22.0) };
-    double[] lExpectedPrimitiveArray = new double[] { (double) 12.0, (double) -1.9, (double) -22.0 };
+        new Double[] { Double.valueOf(12.0), Double.valueOf(-1.9), Double.valueOf(-22.0) };
+    double[] lExpectedPrimitiveArray = new double[] { 12.0, -1.9, -22.0 };
     assertTrue(Arrays.equals(lExpectedPrimitiveArray, lTools.autoBox(lWrapperArray)));
     assertNull(lTools.autoBox((Double[]) null));
 
     // Test auto boxing of primitive arrays to wrappers
     double[] lPrimitiveArray = new double[] { -7, 22, 33, 44, 11 };
-    Double[] lExpectedWrapperArray = new Double[] { Double.valueOf((double) -7), Double.valueOf((double) 22),
-      Double.valueOf((double) 33), Double.valueOf((double) 44), Double.valueOf((double) 11) };
+    Double[] lExpectedWrapperArray = new Double[] { Double.valueOf(-7), Double.valueOf(22),
+      Double.valueOf(33), Double.valueOf(44), Double.valueOf(11) };
     assertTrue(Arrays.equals(lExpectedWrapperArray, lTools.autoBox(lPrimitiveArray)));
     assertNull(lTools.autoBox((double[]) null));
   }

@@ -5,8 +5,8 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.monitoring;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntFunction;
-
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.monitoring.CounterInfo;
@@ -29,6 +27,7 @@ import com.anaptecs.jeaf.tools.api.performance.Stopwatch;
 import com.anaptecs.jeaf.tools.api.performance.TimePrecision;
 import com.anaptecs.jeaf.tools.impl.monitoring.EmptyMonitoringTokenImpl;
 import com.anaptecs.jeaf.tools.impl.monitoring.MonitoringToolsImpl;
+import org.junit.jupiter.api.Test;
 
 public class MonitoringToolsTest {
   @Test
@@ -180,11 +179,11 @@ public class MonitoringToolsTest {
   }
 
   @SafeVarargs
-  public static <T> void monitorObject( String name, T obj, ToIntFunction<T>... valueFunction ) {
+  public static <T> void monitorObject(String name, T obj, ToIntFunction<T>... valueFunction) {
   }
 
   @SafeVarargs
-  public static <T> void monitorObject( String name, T obj, ToDoubleFunction<T>... valueFunction ) {
+  public static <T> void monitorObject(String name, T obj, ToDoubleFunction<T>... valueFunction) {
 
   }
 

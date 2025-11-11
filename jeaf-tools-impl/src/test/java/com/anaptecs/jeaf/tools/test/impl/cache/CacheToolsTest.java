@@ -5,16 +5,14 @@
  */
 package com.anaptecs.jeaf.tools.test.impl.cache;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.cache.Cache;
@@ -24,6 +22,7 @@ import com.anaptecs.jeaf.tools.api.performance.Stopwatch;
 import com.anaptecs.jeaf.tools.api.performance.TimePrecision;
 import com.anaptecs.jeaf.tools.impl.cache.SimpleObjectCache;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import org.junit.jupiter.api.Test;
 
 public class CacheToolsTest {
 

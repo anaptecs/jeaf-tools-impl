@@ -5,10 +5,10 @@
  */
 package com.anaptecs.jeaf.tools.test.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.nio.file.attribute.FileTime;
 import java.text.ParseException;
@@ -17,8 +17,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-import org.junit.jupiter.api.Test;
-
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.ToolsMessages;
 import com.anaptecs.jeaf.tools.api.date.DateFormatStyle;
@@ -26,8 +24,7 @@ import com.anaptecs.jeaf.tools.api.date.DateTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.info.JavaRelease;
-
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
 public class DateToolsTest {
   /** Constants for 1 day, 1 hour, 1 minute and 1 second in milliseconds. */
@@ -183,9 +180,9 @@ public class DateToolsTest {
   @Test
   public void testDateToolsCalculation( ) {
     // Prepare test data.
-    long lNow = (System.currentTimeMillis() / 1000) * 1000;
+    long lNow = System.currentTimeMillis() / 1000 * 1000;
     Date lOneDayAhead = new Date(lNow + ONE_DAY + 10 * ONE_SECOND);
-    Date lManyDaysAhead = new Date(lNow + (70 * ONE_DAY) + 10 * ONE_SECOND);
+    Date lManyDaysAhead = new Date(lNow + 70 * ONE_DAY + 10 * ONE_SECOND);
     Date lOneMinuteAhead = new Date(lNow + ONE_MINUTE + 10 * ONE_SECOND);
     Date lSecondsAhead = new Date(lNow + 5 * ONE_SECOND);
     Date lOneDayBehind = new Date(lNow - ONE_DAY - 10 * ONE_SECOND);
@@ -200,191 +197,172 @@ public class DateToolsTest {
 
     // Test calculation in days.
     DateTools lDateTools = DateTools.getDateTools();
-    TestCase.assertEquals("Date not one day ahead.", 1, lDateTools.calculateTimeDifferenceInDays(lOneDayAhead));
-    TestCase.assertEquals("Date not 70 days ahead.", 70, lDateTools.calculateTimeDifferenceInDays(lManyDaysAhead));
-    TestCase.assertEquals("Date not zero days ahead.", 0, lDateTools.calculateTimeDifferenceInDays(lOneMinuteAhead));
-    TestCase.assertEquals("Date not zero days ahead.", 0, lDateTools.calculateTimeDifferenceInDays(lSecondsAhead));
-    TestCase.assertEquals("Date not one day behind.", -1, lDateTools.calculateTimeDifferenceInDays(lOneDayBehind));
-    TestCase.assertEquals("Date not zero days behind.", 0, lDateTools.calculateTimeDifferenceInDays(lOneHourBehind));
-    TestCase.assertEquals("Date not zero days behind.", 0, lDateTools.calculateTimeDifferenceInDays(lOneMinuteBehind));
-    TestCase.assertEquals("Date not zero days behind.", 0, lDateTools.calculateTimeDifferenceInDays(lSecondsBehind));
-    TestCase.assertEquals("Date not zero days behind.", -32, lDateTools.calculateTimeDifferenceInDays(lManyDaysBehind));
+    assertEquals(1, lDateTools.calculateTimeDifferenceInDays(lOneDayAhead), "Date not one day ahead.");
+    assertEquals(70, lDateTools.calculateTimeDifferenceInDays(lManyDaysAhead), "Date not 70 days ahead.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInDays(lOneMinuteAhead), "Date not zero days ahead.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInDays(lSecondsAhead), "Date not zero days ahead.");
+    assertEquals(-1, lDateTools.calculateTimeDifferenceInDays(lOneDayBehind), "Date not one day behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInDays(lOneHourBehind), "Date not zero days behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInDays(lOneMinuteBehind), "Date not zero days behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInDays(lSecondsBehind), "Date not zero days behind.");
+    assertEquals(-32, lDateTools.calculateTimeDifferenceInDays(lManyDaysBehind), "Date not zero days behind.");
 
     // Test calculation in hours.
-    TestCase.assertEquals("Date not one day ahead.", 24, lDateTools.calculateTimeDifferenceInHours(lOneDayAhead));
-    TestCase.assertEquals("Date not 70 day ahead.", 1680, lDateTools.calculateTimeDifferenceInHours(lManyDaysAhead));
-    TestCase.assertEquals("Date not zero days ahead.", 0, lDateTools.calculateTimeDifferenceInHours(lOneMinuteAhead));
-    TestCase.assertEquals("Date not zero days ahead.", 0, lDateTools.calculateTimeDifferenceInHours(lSecondsAhead));
-    TestCase.assertEquals("Date not one day behind.", -24, lDateTools.calculateTimeDifferenceInHours(lOneDayBehind));
-    TestCase.assertEquals("Date not zero days behind.", -1, lDateTools.calculateTimeDifferenceInHours(lOneHourBehind));
-    TestCase.assertEquals("Date not zero days behind.", 0, lDateTools.calculateTimeDifferenceInHours(lOneMinuteBehind));
-    TestCase.assertEquals("Date not zero days behind.", 0, lDateTools.calculateTimeDifferenceInHours(lSecondsBehind));
-    TestCase.assertEquals("Date not zero days behind.", -768,
-        lDateTools.calculateTimeDifferenceInHours(lManyDaysBehind));
+    assertEquals(24, lDateTools.calculateTimeDifferenceInHours(lOneDayAhead), "Date not one day ahead.");
+    assertEquals(1680, lDateTools.calculateTimeDifferenceInHours(lManyDaysAhead), "Date not 70 day ahead.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInHours(lOneMinuteAhead), "Date not zero days ahead.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInHours(lSecondsAhead), "Date not zero days ahead.");
+    assertEquals(-24, lDateTools.calculateTimeDifferenceInHours(lOneDayBehind), "Date not one day behind.");
+    assertEquals(-1, lDateTools.calculateTimeDifferenceInHours(lOneHourBehind), "Date not zero days behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInHours(lOneMinuteBehind), "Date not zero days behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInHours(lSecondsBehind), "Date not zero days behind.");
+    assertEquals(-768, lDateTools.calculateTimeDifferenceInHours(lManyDaysBehind), "Date not zero days behind.");
 
     // Test calculation in minutes.
-    TestCase.assertEquals("Date not one day ahead.", 1440, lDateTools.calculateTimeDifferenceInMinutes(lOneDayAhead));
-    TestCase.assertEquals("Date not 70 day ahead.", 100800,
-        lDateTools.calculateTimeDifferenceInMinutes(lManyDaysAhead));
-    TestCase.assertEquals("Date not zero days ahead.", 1, lDateTools.calculateTimeDifferenceInMinutes(lOneMinuteAhead));
-    TestCase.assertEquals("Date not zero days behind.", 0, lDateTools.calculateTimeDifferenceInMinutes(lSecondsBehind));
-    TestCase.assertEquals("Date not one day behind.", -1440,
-        lDateTools.calculateTimeDifferenceInMinutes(lOneDayBehind));
-    TestCase.assertEquals("Date not zero days behind.", -60,
-        lDateTools.calculateTimeDifferenceInMinutes(lOneHourBehind));
-    TestCase.assertEquals("Date not zero days behind.", -1,
-        lDateTools.calculateTimeDifferenceInMinutes(lOneMinuteBehind));
-    TestCase.assertEquals("Date not zero days behind.", 0, lDateTools.calculateTimeDifferenceInMinutes(lSecondsBehind));
-    TestCase.assertEquals("Date not zero days behind.", -46080,
-        lDateTools.calculateTimeDifferenceInMinutes(lManyDaysBehind));
+    assertEquals(1440, lDateTools.calculateTimeDifferenceInMinutes(lOneDayAhead), "Date not one day ahead.");
+    assertEquals(100800, lDateTools.calculateTimeDifferenceInMinutes(lManyDaysAhead), "Date not 70 day ahead.");
+    assertEquals(1, lDateTools.calculateTimeDifferenceInMinutes(lOneMinuteAhead), "Date not zero days ahead.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInMinutes(lSecondsBehind), "Date not zero days behind.");
+    assertEquals(-1440, lDateTools.calculateTimeDifferenceInMinutes(lOneDayBehind), "Date not one day behind.");
+    assertEquals(-60, lDateTools.calculateTimeDifferenceInMinutes(lOneHourBehind), "Date not zero days behind.");
+    assertEquals(-1, lDateTools.calculateTimeDifferenceInMinutes(lOneMinuteBehind), "Date not zero days behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInMinutes(lSecondsBehind), "Date not zero days behind.");
+    assertEquals(-46080, lDateTools.calculateTimeDifferenceInMinutes(lManyDaysBehind), "Date not zero days behind.");
 
     // Test calculation in minutes.
-    TestCase.assertTrue("Date not one day ahead.",
-        1440 * 60 <= lDateTools.calculateTimeDifferenceInSeconds(lOneDayAhead));
-    TestCase.assertTrue("Date not one day ahead.",
-        1440 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lOneDayAhead));
-    TestCase.assertTrue("Date not 70 day ahead.",
-        100800 * 60 < lDateTools.calculateTimeDifferenceInSeconds(lManyDaysAhead));
-    TestCase.assertTrue("Date not 70 day ahead.",
-        100800 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lManyDaysAhead));
+    assertTrue(1440 * 60 <= lDateTools.calculateTimeDifferenceInSeconds(lOneDayAhead), "Date not one day ahead.");
+    assertTrue(1440 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lOneDayAhead), "Date not one day ahead.");
+    assertTrue(100800 * 60 < lDateTools.calculateTimeDifferenceInSeconds(lManyDaysAhead), "Date not 70 day ahead.");
+    assertTrue(100800 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lManyDaysAhead),
+        "Date not 70 day ahead.");
 
-    TestCase.assertTrue("Date not zero days ahead.",
-        1 * 60 < lDateTools.calculateTimeDifferenceInSeconds(lOneMinuteAhead));
-    TestCase.assertTrue("Date not zero days ahead.",
-        1 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lOneMinuteAhead));
+    assertTrue(1 * 60 < lDateTools.calculateTimeDifferenceInSeconds(lOneMinuteAhead), "Date not zero days ahead.");
+    assertTrue(1 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lOneMinuteAhead), "Date not zero days ahead.");
+    assertTrue(-6 < lDateTools.calculateTimeDifferenceInSeconds(lSecondsBehind), "Date not zero days behind.");
+    assertTrue(0 > lDateTools.calculateTimeDifferenceInSeconds(lSecondsBehind), "Date not zero days behind.");
+    assertTrue(-1440 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lOneDayBehind), "Date not one day behind.");
+    assertTrue(-1440 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lOneDayBehind),
+        "Date not one day behind.");
+    assertTrue(-60 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lOneHourBehind), "Date not zero days behind.");
+    assertTrue(-60 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lOneHourBehind),
+        "Date not zero days behind.");
 
-    TestCase.assertTrue("Date not zero days behind.", -6 < lDateTools.calculateTimeDifferenceInSeconds(lSecondsBehind));
-    TestCase.assertTrue("Date not zero days behind.", 0 > lDateTools.calculateTimeDifferenceInSeconds(lSecondsBehind));
+    assertTrue(-1 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lOneMinuteBehind), "Date not zero days behind.");
 
-    TestCase.assertTrue("Date not one day behind.",
-        -1440 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lOneDayBehind));
-    TestCase.assertTrue("Date not one day behind.",
-        -1440 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lOneDayBehind));
+    assertTrue(0 > lDateTools.calculateTimeDifferenceInSeconds(lSecondsBehind), "Date not zero days behind.");
+    assertTrue(-11 < lDateTools.calculateTimeDifferenceInSeconds(lSecondsBehind), "Date not zero days behind.");
 
-    TestCase.assertTrue("Date not zero days behind.",
-        -60 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lOneHourBehind));
-
-    TestCase.assertTrue("Date not zero days behind.",
-        -60 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lOneHourBehind));
-
-    TestCase.assertTrue("Date not zero days behind.",
-        -1 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lOneMinuteBehind));
-
-    TestCase.assertTrue("Date not zero days behind.", 0 > lDateTools.calculateTimeDifferenceInSeconds(lSecondsBehind));
-    TestCase.assertTrue("Date not zero days behind.",
-        -11 < lDateTools.calculateTimeDifferenceInSeconds(lSecondsBehind));
-
-    TestCase.assertTrue("Date not zero days behind.",
-        -46080 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lManyDaysBehind));
-    TestCase.assertTrue("Date not zero days behind.",
-        -46080 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lManyDaysBehind));
+    assertTrue(-46080 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lManyDaysBehind),
+        "Date not zero days behind.");
+    assertTrue(-46080 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lManyDaysBehind),
+        "Date not zero days behind.");
 
     //
     // Test calculation with java.util.Calendar
     //
 
     // Test calculation in days.
-    TestCase.assertEquals("Date not one day ahead.", 1,
-        lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lOneDayAhead)));
-    TestCase.assertEquals("Date not 70 days ahead.", 70,
-        lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lManyDaysAhead)));
-    TestCase.assertEquals("Date not zero days ahead.", 0,
-        lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lOneMinuteAhead)));
-    TestCase.assertEquals("Date not zero days ahead.", 0,
-        lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lSecondsAhead)));
-    TestCase.assertEquals("Date not one day behind.", -1,
-        lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lOneDayBehind)));
-    TestCase.assertEquals("Date not zero days behind.", 0,
-        lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lOneHourBehind)));
-    TestCase.assertEquals("Date not zero days behind.", 0,
-        lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lOneMinuteBehind)));
-    TestCase.assertEquals("Date not zero days behind.", 0,
-        lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lSecondsBehind)));
-    TestCase.assertEquals("Date not zero days behind.", -32,
-        lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lManyDaysBehind)));
+    assertEquals(1, lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lOneDayAhead)),
+        "Date not zero days behind.");
+    assertEquals(70, lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lManyDaysAhead)),
+        "Date not 70 days ahead.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lOneMinuteAhead)),
+        "Date not zero days ahead.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lSecondsAhead)),
+        "Date not zero days ahead.");
+    assertEquals(-1, lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lOneDayBehind)),
+        "Date not one day behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lOneHourBehind)),
+        "Date not zero days behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lOneMinuteBehind)),
+        "Date not zero days behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lSecondsBehind)),
+        "Date not zero days behind.");
+    assertEquals(-32, lDateTools.calculateTimeDifferenceInDays(lDateTools.toCalendar(lManyDaysBehind)),
+        "Date not zero days behind.");
 
     // Test calculation in hours.
-    TestCase.assertEquals("Date not one day ahead.", 24,
-        lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lOneDayAhead)));
-    TestCase.assertEquals("Date not 70 day ahead.", 1680,
-        lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lManyDaysAhead)));
-    TestCase.assertEquals("Date not zero days ahead.", 0,
-        lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lOneMinuteAhead)));
-    TestCase.assertEquals("Date not zero days ahead.", 0,
-        lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lSecondsAhead)));
-    TestCase.assertEquals("Date not one day behind.", -24,
-        lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lOneDayBehind)));
-    TestCase.assertEquals("Date not zero days behind.", -1,
-        lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lOneHourBehind)));
-    TestCase.assertEquals("Date not zero days behind.", 0,
-        lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lOneMinuteBehind)));
-    TestCase.assertEquals("Date not zero days behind.", 0,
-        lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lSecondsBehind)));
-    TestCase.assertEquals("Date not zero days behind.", -768,
-        lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lManyDaysBehind)));
+    assertEquals(24, lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lOneDayAhead)),
+        "Date not one day ahead.");
+    assertEquals(1680, lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lManyDaysAhead)),
+        "Date not 70 days ahead.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lOneMinuteAhead)),
+        "Date not zero days ahead.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lSecondsAhead)),
+        "Date not zero days ahead.");
+    assertEquals(-24, lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lOneDayBehind)),
+        "Date not one day behind.");
+    assertEquals(-1, lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lOneHourBehind)),
+        "Date not zero days behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lOneMinuteBehind)),
+        "Date not zero days behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lSecondsBehind)),
+        "Date not zero days behind.");
+    assertEquals(-768, lDateTools.calculateTimeDifferenceInHours(lDateTools.toCalendar(lManyDaysBehind)),
+        "Date not zero days behind.");
 
     // Test calculation in minutes.
-    TestCase.assertEquals("Date not one day ahead.", 1440,
-        lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lOneDayAhead)));
-    TestCase.assertEquals("Date not 70 day ahead.", 100800,
-        lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lManyDaysAhead)));
-    TestCase.assertEquals("Date not zero days ahead.", 1,
-        lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lOneMinuteAhead)));
-    TestCase.assertEquals("Date not zero days behind.", 0,
-        lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lSecondsBehind)));
-    TestCase.assertEquals("Date not one day behind.", -1440,
-        lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lOneDayBehind)));
-    TestCase.assertEquals("Date not zero days behind.", -60,
-        lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lOneHourBehind)));
-    TestCase.assertEquals("Date not zero days behind.", -1,
-        lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lOneMinuteBehind)));
-    TestCase.assertEquals("Date not zero days behind.", 0,
-        lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lSecondsBehind)));
-    TestCase.assertEquals("Date not zero days behind.", -46080,
-        lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lManyDaysBehind)));
+    assertEquals(1440, lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lOneDayAhead)),
+        "Date not one day ahead.");
+    assertEquals(100800, lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lManyDaysAhead)),
+        "Date not 70 day ahead.");
+    assertEquals(1, lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lOneMinuteAhead)),
+        "Date not zero days ahead.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lSecondsBehind)),
+        "Date not zero days behind.");
+    assertEquals(-1440, lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lOneDayBehind)),
+        "Date not one day behind.");
+    assertEquals(-60, lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lOneHourBehind)),
+        "Date not zero days behind.");
+    assertEquals(-1, lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lOneMinuteBehind)),
+        "Date not zero days behind.");
+    assertEquals(0, lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lSecondsBehind)),
+        "Date not zero days behind.");
+    assertEquals(-46080, lDateTools.calculateTimeDifferenceInMinutes(lDateTools.toCalendar(lManyDaysBehind)),
+        "Date not zero days behind.");
 
-    TestCase.assertTrue("Date not one day ahead.",
-        1440 * 60 <= lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneDayAhead)));
-    TestCase.assertTrue("Date not one day ahead.",
-        1440 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneDayAhead)));
-    TestCase.assertTrue("Date not 70 day ahead.",
-        100800 * 60 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lManyDaysAhead)));
-    TestCase.assertTrue("Date not 70 day ahead.",
-        100800 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lManyDaysAhead)));
+    assertTrue(1440 * 60 <= lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneDayAhead)),
+        "Date not one day ahead.");
+    assertTrue(1440 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneDayAhead)),
+        "Date not one day ahead.");
+    assertTrue(100800 * 60 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lManyDaysAhead)),
+        "Date not 70 day ahead.");
+    assertTrue(100800 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lManyDaysAhead)),
+        "Date not 70 day ahead.");
 
-    TestCase.assertTrue("Date not zero days ahead.",
-        1 * 60 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneMinuteAhead)));
-    TestCase.assertTrue("Date not zero days ahead.",
-        1 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneMinuteAhead)));
+    assertTrue(1 * 60 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneMinuteAhead)),
+        "Date not zero days ahead.");
+    assertTrue(1 * 60 + 10 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneMinuteAhead)),
+        "Date not zero days ahead.");
 
-    TestCase.assertTrue("Date not zero days behind.",
-        -6 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lSecondsBehind)));
-    TestCase.assertTrue("Date not zero days behind.",
-        0 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lSecondsBehind)));
+    assertTrue(-6 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lSecondsBehind)),
+        "Date not zero days behind.");
+    assertTrue(0 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lSecondsBehind)),
+        "Date not zero days behind.");
 
-    TestCase.assertTrue("Date not one day behind.",
-        -1440 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneDayBehind)));
-    TestCase.assertTrue("Date not one day behind.",
-        -1440 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneDayBehind)));
+    assertTrue(-1440 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneDayBehind)),
+        "Date not one day behind.");
+    assertTrue(-1440 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneDayBehind)),
+        "Date not one day behind.");
 
-    TestCase.assertTrue("Date not zero days behind.",
-        -60 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneHourBehind)));
+    assertTrue(-60 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneHourBehind)),
+        "Date not zero days behind.");
 
-    TestCase.assertTrue("Date not zero days behind.",
-        -60 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneHourBehind)));
+    assertTrue(-60 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneHourBehind)),
+        "Date not zero days behind.");
 
-    TestCase.assertTrue("Date not zero days behind.",
-        -1 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneMinuteBehind)));
+    assertTrue(-1 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lOneMinuteBehind)),
+        "Date not zero days behind.");
 
-    TestCase.assertTrue("Date not zero days behind.",
-        0 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lSecondsBehind)));
-    TestCase.assertTrue("Date not zero days behind.",
-        -11 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lSecondsBehind)));
+    assertTrue(0 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lSecondsBehind)),
+        "Date not zero days behind.");
+    assertTrue(-11 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lSecondsBehind)),
+        "Date not zero days behind.");
 
-    TestCase.assertTrue("Date not zero days behind.",
-        -46080 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lManyDaysBehind)));
-    TestCase.assertTrue("Date not zero days behind.",
-        -46080 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lManyDaysBehind)));
+    assertTrue(-46080 * 60 > lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lManyDaysBehind)),
+        "Date not zero days behind.");
+    assertTrue(-46080 * 60 - 11 < lDateTools.calculateTimeDifferenceInSeconds(lDateTools.toCalendar(lManyDaysBehind)),
+        "Date not zero days behind.");
   }
 
   @Test
@@ -444,7 +422,21 @@ public class DateToolsTest {
     assertEquals(lDefaultExpected, lDateTools.toLocalizedDateTimeString(lCalendar, DateFormatStyle.SHORT));
 
     // Unfortunately date behavior changed with Java 11
-    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_11)) {
+    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_21)) {
+      assertEquals("23.12.20, 13:17",
+          lDateTools.toLocalizedDateTimeString(lDate, Locale.GERMANY, DateFormatStyle.SHORT));
+      assertEquals("23.12.20, 13:17",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.GERMANY, DateFormatStyle.SHORT));
+      assertEquals("12/23/20, 1:17 PM", lDateTools.toLocalizedDateTimeString(lDate, Locale.US, DateFormatStyle.SHORT));
+      assertEquals("12/23/20, 1:17 PM",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.US, DateFormatStyle.SHORT));
+      assertEquals("23/12/2020 13:17",
+          lDateTools.toLocalizedDateTimeString(lDate, Locale.FRANCE, DateFormatStyle.SHORT));
+      assertEquals("23/12/2020 13:17",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.FRANCE, DateFormatStyle.SHORT));
+    }
+    // Unfortunately date behavior changed with Java 11
+    else if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_11)) {
       assertEquals("23.12.20, 13:17",
           lDateTools.toLocalizedDateTimeString(lDate, Locale.GERMANY, DateFormatStyle.SHORT));
       assertEquals("23.12.20, 13:17",
@@ -475,7 +467,22 @@ public class DateToolsTest {
     lDefaultExpected = lDateTools.toLocalizedDateTimeString(lDate, lCurrentLocale, DateFormatStyle.MEDIUM);
     assertEquals(lDefaultExpected, lDateTools.toLocalizedDateTimeString(lDate, DateFormatStyle.MEDIUM));
     assertEquals(lDefaultExpected, lDateTools.toLocalizedDateTimeString(lCalendar, DateFormatStyle.MEDIUM));
-    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_17)) {
+
+    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_21)) {
+      assertEquals("23.12.2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lDate, Locale.GERMANY, DateFormatStyle.MEDIUM));
+      assertEquals("23.12.2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.GERMANY, DateFormatStyle.MEDIUM));
+      assertEquals("Dec 23, 2020, 1:17:05 PM",
+          lDateTools.toLocalizedDateTimeString(lDate, Locale.US, DateFormatStyle.MEDIUM));
+      assertEquals("Dec 23, 2020, 1:17:05 PM",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.US, DateFormatStyle.MEDIUM));
+      assertEquals("23 déc. 2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lDate, Locale.FRANCE, DateFormatStyle.MEDIUM));
+      assertEquals("23 déc. 2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.FRANCE, DateFormatStyle.MEDIUM));
+    }
+    else if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_17)) {
       assertEquals("23.12.2020, 13:17:05",
           lDateTools.toLocalizedDateTimeString(lDate, Locale.GERMANY, DateFormatStyle.MEDIUM));
       assertEquals("23.12.2020, 13:17:05",
@@ -522,7 +529,21 @@ public class DateToolsTest {
     lDefaultExpected = lDateTools.toLocalizedDateTimeString(lDate, lCurrentLocale, DateFormatStyle.LONG);
     assertEquals(lDefaultExpected, lDateTools.toLocalizedDateTimeString(lDate, DateFormatStyle.LONG));
     assertEquals(lDefaultExpected, lDateTools.toLocalizedDateTimeString(lCalendar, DateFormatStyle.LONG));
-    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_17)) {
+    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_21)) {
+      assertEquals("23. Dezember 2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lDate, Locale.GERMANY, DateFormatStyle.LONG));
+      assertEquals("23. Dezember 2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.GERMANY, DateFormatStyle.LONG));
+      assertEquals("December 23, 2020, 1:17:05 PM",
+          lDateTools.toLocalizedDateTimeString(lDate, Locale.US, DateFormatStyle.LONG));
+      assertEquals("December 23, 2020, 1:17:05 PM",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.US, DateFormatStyle.LONG));
+      assertEquals("23 décembre 2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lDate, Locale.FRANCE, DateFormatStyle.LONG));
+      assertEquals("23 décembre 2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.FRANCE, DateFormatStyle.LONG));
+    }
+    else if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_17)) {
       assertEquals("23. Dezember 2020, 13:17:05",
           lDateTools.toLocalizedDateTimeString(lDate, Locale.GERMANY, DateFormatStyle.LONG));
       assertEquals("23. Dezember 2020, 13:17:05",
@@ -570,7 +591,21 @@ public class DateToolsTest {
     assertEquals(lDefaultExpected, lDateTools.toLocalizedDateTimeString(lDate, DateFormatStyle.FULL));
     assertEquals(lDefaultExpected, lDateTools.toLocalizedDateTimeString(lCalendar, DateFormatStyle.FULL));
 
-    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_17)) {
+    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_21)) {
+      assertEquals("Mittwoch, 23. Dezember 2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lDate, Locale.GERMANY, DateFormatStyle.FULL));
+      assertEquals("Mittwoch, 23. Dezember 2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.GERMANY, DateFormatStyle.FULL));
+      assertEquals("Wednesday, December 23, 2020, 1:17:05 PM",
+          lDateTools.toLocalizedDateTimeString(lDate, Locale.US, DateFormatStyle.FULL));
+      assertEquals("Wednesday, December 23, 2020, 1:17:05 PM",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.US, DateFormatStyle.FULL));
+      assertEquals("mercredi 23 décembre 2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lDate, Locale.FRANCE, DateFormatStyle.FULL));
+      assertEquals("mercredi 23 décembre 2020, 13:17:05",
+          lDateTools.toLocalizedDateTimeString(lCalendar, Locale.FRANCE, DateFormatStyle.FULL));
+    }
+    else if (XFun.getInfoProvider().getJavaRuntimeEnvironment().isEqualOrHigher(JavaRelease.JAVA_17)) {
       assertEquals("Mittwoch, 23. Dezember 2020, 13:17:05",
           lDateTools.toLocalizedDateTimeString(lDate, Locale.GERMANY, DateFormatStyle.FULL));
       assertEquals("Mittwoch, 23. Dezember 2020, 13:17:05",
@@ -712,8 +747,17 @@ public class DateToolsTest {
 
     assertEquals("13:17", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.GERMANY, DateFormatStyle.SHORT));
     assertEquals("13:17", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.GERMANY, DateFormatStyle.SHORT));
-    assertEquals("1:17 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.SHORT));
-    assertEquals("1:17 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.SHORT));
+
+    // Starting with Java 21 some not visible special characters changed ;-)
+    // https://stackoverflow.com/questions/77225936/java-21-problem-with-dateformat-getdatetimeinstance-formatnew-date
+    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().getJavaRelease().isEqualOrHigher(JavaRelease.JAVA_21)) {
+      assertEquals("1:17 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.SHORT));
+      assertEquals("1:17 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.SHORT));
+    }
+    else {
+      assertEquals("1:17 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.SHORT));
+      assertEquals("1:17 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.SHORT));
+    }
     assertEquals("13:17", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.FRANCE, DateFormatStyle.SHORT));
     assertEquals("13:17", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.FRANCE, DateFormatStyle.SHORT));
 
@@ -723,8 +767,16 @@ public class DateToolsTest {
     assertEquals(lDefaultExpected, lDateTools.toLocalizedTimeOnlyString(lCalendar, DateFormatStyle.MEDIUM));
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.GERMANY, DateFormatStyle.MEDIUM));
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.GERMANY, DateFormatStyle.MEDIUM));
-    assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.MEDIUM));
-    assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.MEDIUM));
+
+    // Starting with Java 21 some not visible special characters changed ;-)
+    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().getJavaRelease().isEqualOrHigher(JavaRelease.JAVA_21)) {
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.MEDIUM));
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.MEDIUM));
+    }
+    else {
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.MEDIUM));
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.MEDIUM));
+    }
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.FRANCE, DateFormatStyle.MEDIUM));
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.FRANCE, DateFormatStyle.MEDIUM));
 
@@ -734,8 +786,16 @@ public class DateToolsTest {
     assertEquals(lDefaultExpected, lDateTools.toLocalizedTimeOnlyString(lCalendar, DateFormatStyle.LONG));
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.GERMANY, DateFormatStyle.LONG));
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.GERMANY, DateFormatStyle.LONG));
-    assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.LONG));
-    assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.LONG));
+
+    // Starting with Java 21 some not visible special characters changed ;-)
+    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().getJavaRelease().isEqualOrHigher(JavaRelease.JAVA_21)) {
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.LONG));
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.LONG));
+    }
+    else {
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.LONG));
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.LONG));
+    }
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.FRANCE, DateFormatStyle.LONG));
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.FRANCE, DateFormatStyle.LONG));
 
@@ -745,8 +805,16 @@ public class DateToolsTest {
     assertEquals(lDefaultExpected, lDateTools.toLocalizedTimeOnlyString(lCalendar, DateFormatStyle.FULL));
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.GERMANY, DateFormatStyle.FULL));
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.GERMANY, DateFormatStyle.FULL));
-    assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.FULL));
-    assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.FULL));
+
+    // Starting with Java 21 some not visible special characters changed ;-)
+    if (XFun.getInfoProvider().getJavaRuntimeEnvironment().getJavaRelease().isEqualOrHigher(JavaRelease.JAVA_21)) {
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.FULL));
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.FULL));
+    }
+    else {
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.US, DateFormatStyle.FULL));
+      assertEquals("1:17:05 PM", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.US, DateFormatStyle.FULL));
+    }
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lDate, Locale.FRANCE, DateFormatStyle.FULL));
     assertEquals("13:17:05", lDateTools.toLocalizedTimeOnlyString(lCalendar, Locale.FRANCE, DateFormatStyle.FULL));
   }

@@ -6,18 +6,16 @@
 package com.anaptecs.jeaf.tools.test.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Locale;
-
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.ToolsMessages;
 import com.anaptecs.jeaf.tools.api.locale.LocaleTools;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.errorhandling.SystemException;
-
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
 public class LocaleToolsTest {
 
@@ -27,34 +25,34 @@ public class LocaleToolsTest {
   @Test
   public void testCreateLocale( ) {
     Locale lLocale = LocaleTools.getLocaleTools().createLocale("_DE");
-    TestCase.assertEquals("Locale has wrong langage.", "", lLocale.getLanguage());
-    TestCase.assertEquals("Locale has wrong country.", Locale.GERMANY.getCountry(), lLocale.getCountry());
-    TestCase.assertEquals("Locale has wrong variant.", "", lLocale.getVariant());
+    assertEquals("", lLocale.getLanguage(), "Locale has wrong langage.");
+    assertEquals(Locale.GERMANY.getCountry(), lLocale.getCountry(), "Locale has wrong country.");
+    assertEquals("", lLocale.getVariant(), "Locale has wrong variant.");
 
     lLocale = Tools.getLocaleTools().createLocale("de");
-    TestCase.assertEquals("Locale has wrong langage.", Locale.GERMAN.getLanguage(), lLocale.getLanguage());
-    TestCase.assertEquals("Locale has wrong country.", "", lLocale.getCountry());
-    TestCase.assertEquals("Locale has wrong variant.", "", lLocale.getVariant());
+    assertEquals(Locale.GERMAN.getLanguage(), lLocale.getLanguage(), "Locale has wrong langage.");
+    assertEquals("", lLocale.getCountry(), "Locale has wrong country.");
+    assertEquals("", lLocale.getVariant(), "Locale has wrong variant.");
 
     lLocale = Tools.getLocaleTools().createLocale("de_DE");
-    TestCase.assertEquals("Locale has wrong langage.", Locale.GERMAN.getLanguage(), lLocale.getLanguage());
-    TestCase.assertEquals("Locale has wrong country.", Locale.GERMANY.getCountry(), lLocale.getCountry());
-    TestCase.assertEquals("Locale has wrong variant.", "", lLocale.getVariant());
+    assertEquals(Locale.GERMAN.getLanguage(), lLocale.getLanguage(), "Locale has wrong langage.");
+    assertEquals(Locale.GERMANY.getCountry(), lLocale.getCountry(), "Locale has wrong country.");
+    assertEquals("", lLocale.getVariant(), "Locale has wrong variant.");
 
     lLocale = Tools.getLocaleTools().createLocale("de_DE_Swabian");
-    TestCase.assertEquals("Locale has wrong langage.", Locale.GERMAN.getLanguage(), lLocale.getLanguage());
-    TestCase.assertEquals("Locale has wrong country.", Locale.GERMANY.getCountry(), lLocale.getCountry());
-    TestCase.assertEquals("Locale has wrong variant.", "Swabian", lLocale.getVariant());
+    assertEquals(Locale.GERMAN.getLanguage(), lLocale.getLanguage(), "Locale has wrong langage.");
+    assertEquals(Locale.GERMANY.getCountry(), lLocale.getCountry(), "Locale has wrong country.");
+    assertEquals("Swabian", lLocale.getVariant(), "Locale has wrong variant.");
 
     lLocale = Tools.getLocaleTools().createLocale("de__Swabian");
-    TestCase.assertEquals("Locale has wrong langage.", Locale.GERMAN.getLanguage(), lLocale.getLanguage());
-    TestCase.assertEquals("Locale has wrong country.", "", lLocale.getCountry());
-    TestCase.assertEquals("Locale has wrong variant.", "Swabian", lLocale.getVariant());
+    assertEquals(Locale.GERMAN.getLanguage(), lLocale.getLanguage(), "Locale has wrong langage.");
+    assertEquals("", lLocale.getCountry(), "Locale has wrong country.");
+    assertEquals("Swabian", lLocale.getVariant(), "Locale has wrong variant.");
 
     lLocale = Tools.getLocaleTools().createLocale("_DE_Swabian");
-    TestCase.assertEquals("Locale has wrong langage.", "", lLocale.getLanguage());
-    TestCase.assertEquals("Locale has wrong country.", Locale.GERMANY.getCountry(), lLocale.getCountry());
-    TestCase.assertEquals("Locale has wrong variant.", "Swabian", lLocale.getVariant());
+    assertEquals("", lLocale.getLanguage(), "Locale has wrong langage.");
+    assertEquals(Locale.GERMANY.getCountry(), lLocale.getCountry(), "Locale has wrong country.");
+    assertEquals("Swabian", lLocale.getVariant(), "Locale has wrong variant.");
 
     //
     // Test method with invalid locale strings.
@@ -63,42 +61,41 @@ public class LocaleToolsTest {
     // Test with variant only.
     try {
       lLocale = Tools.getLocaleTools().createLocale("__Swabian");
-      TestCase.fail("A variant only is not a valid locale string.");
+      fail("A variant only is not a valid locale string.");
     }
     catch (SystemException e) {
       // Check exception.
-      TestCase.assertEquals("Wrong error code.", ToolsMessages.LANGUAGE_OR_COUNTRY_MISSING, e.getErrorCode());
+      assertEquals(ToolsMessages.LANGUAGE_OR_COUNTRY_MISSING, e.getErrorCode(), "Wrong error code.");
     }
 
     // Test with empty string.
     try {
       lLocale = Tools.getLocaleTools().createLocale("");
-      TestCase.fail("An empty string is not a valid locale string.");
+      fail("An empty string is not a valid locale string.");
     }
     catch (SystemException e) {
       // Check exception.
-      TestCase.assertEquals("Wrong error code.", ToolsMessages.LANGUAGE_OR_COUNTRY_MISSING, e.getErrorCode());
+      assertEquals(ToolsMessages.LANGUAGE_OR_COUNTRY_MISSING, e.getErrorCode(), "Wrong error code.");
     }
 
     // Test without locale information.
     try {
       lLocale = Tools.getLocaleTools().createLocale("___");
-      TestCase.fail("Empty locale information not detected.");
+      fail("Empty locale information not detected.");
     }
     catch (SystemException e) {
       // Check exception.
-      TestCase.assertEquals("Wrong error code.", ToolsMessages.LANGUAGE_OR_COUNTRY_MISSING, e.getErrorCode());
+      assertEquals(ToolsMessages.LANGUAGE_OR_COUNTRY_MISSING, e.getErrorCode(), "Wrong error code.");
     }
 
     // Test with invalid locale format.
     try {
       lLocale = Tools.getLocaleTools().createLocale("de_DE_abc_def_ghi");
-      TestCase.fail("Invalid string format not detected.");
+      fail("Invalid string format not detected.");
     }
     catch (SystemException e) {
       // Check exception.
-      TestCase.assertEquals("Exception has wrong error code.", ToolsMessages.INVALID_LOCALE_STRING_FORMAT,
-          e.getErrorCode());
+      assertEquals(ToolsMessages.INVALID_LOCALE_STRING_FORMAT, e.getErrorCode(), "Exception has wrong error code.");
     }
   }
 

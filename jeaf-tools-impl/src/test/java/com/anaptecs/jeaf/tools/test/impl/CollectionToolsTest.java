@@ -1,14 +1,14 @@
 /*
  * anaptecs GmbH, Burgstr. 96, 72764 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2014 All rights reserved.
  */
 package com.anaptecs.jeaf.tools.test.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,16 +20,13 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import org.junit.jupiter.api.Test;
-
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.collections.CollectionTools;
-
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class to test the functionality of class com.anaptecs.jeaf.fwk.util.Tools.
- * 
+ *
  * @author JEAF Development Team
  * @version 1.0
  */
@@ -46,12 +43,11 @@ public class CollectionToolsTest {
     lStrings.add("!");
 
     CollectionTools lCollectionTools = CollectionTools.getCollectionTools();
-    TestCase.assertEquals("Wrong string representation of collection", "HelloWorld!",
-        lCollectionTools.toString(lStrings, ""));
-    TestCase.assertEquals("Wrong string representation of collection", "Hello World !",
-        lCollectionTools.toString(lStrings, " "));
-    TestCase.assertEquals("Wrong string representation of collection", "Hello, World, !",
-        lCollectionTools.toString(lStrings, ", "));
+    assertEquals("HelloWorld!", lCollectionTools.toString(lStrings, ""), "Wrong string representation of collection");
+    assertEquals("Hello World !", lCollectionTools.toString(lStrings, " "),
+        "Wrong string representation of collection");
+    assertEquals("Hello, World, !", lCollectionTools.toString(lStrings, ", "),
+        "Wrong string representation of collection");
   }
 
   @Test

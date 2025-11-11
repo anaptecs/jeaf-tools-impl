@@ -5,11 +5,11 @@
  */
 package com.anaptecs.jeaf.tools.test.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 import java.net.Inet4Address;
@@ -30,7 +30,6 @@ import com.anaptecs.jeaf.tools.impl.network.NetworkingToolsConfiguration;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.info.OperatingSystem;
-import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
 
 @NetworkingToolsConfig(pingTimeout = -1)
@@ -46,7 +45,7 @@ public class NetworkingToolsTest {
     NetworkingTools lNetworkingTools = Tools.getNetworkingTools();
     boolean lReachable = lNetworkingTools.isReachable("127.0.0.1");
 
-    assertTrue("Ping test for 127.0.0.1 failed.", lReachable);
+    assertTrue(lReachable, "Ping test for 127.0.0.1 failed.");
 
     // Test standard ping.
     lReachable = lNetworkingTools.isReachable("www.heise.de");
@@ -54,7 +53,7 @@ public class NetworkingToolsTest {
     // In case of Linux root privileges are required to execute ping, which is usually will not be the case.
     OperatingSystem lOperatingSystem = XFun.getInfoProvider().getOperatingSystem();
     if (lOperatingSystem == OperatingSystem.LINUX || lOperatingSystem == OperatingSystem.MAC) {
-      assertFalse("Due to missing root privileges ping is expected to fail.", lReachable);
+      assertFalse(lReachable, "Due to missing root privileges ping is expected to fail.");
     }
     else {
       assertTrue(lReachable);
@@ -67,7 +66,7 @@ public class NetworkingToolsTest {
       lNetworkingTools.isReachable("Invalid IP");
     }
     catch (JEAFSystemException e) {
-      TestCase.assertEquals("Wrong error code", ToolsMessages.UNKNOWN_HOST, e.getErrorCode());
+      assertEquals(ToolsMessages.UNKNOWN_HOST, e.getErrorCode(), "Wrong error code");
     }
   }
 

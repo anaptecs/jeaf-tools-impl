@@ -24,6 +24,13 @@
 		<tag>HEAD</tag>
 	</scm>
 	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/anaptecs/jeaf-tools-impl</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<properties>
 		<jeaf.x-fun.test-runtime.version>1.8.1-SNAPSHOT</jeaf.x-fun.test-runtime.version>
 		<jeaf.tools.api.version>1.8.1-SNAPSHOT</jeaf.tools.api.version>

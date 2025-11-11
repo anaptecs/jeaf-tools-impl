@@ -949,6 +949,7 @@ public class FileToolsTest {
     lExtensions.add("*.jpg");
     List<String> lExclusions = new ArrayList<>();
     lFiles = lFileTools.listFiles(lRootDir, lExtensions, null);
+    lFiles.sort(new FileNameComparator());
     assertEquals(2, lFiles.size());
     assertEquals("preview.jpg", lFiles.get(0).getName());
     assertEquals("preview_small.jpg", lFiles.get(1).getName());

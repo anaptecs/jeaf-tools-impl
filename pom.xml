@@ -18,9 +18,9 @@
 	<url>https://www.anaptecs.de/jeaf</url>
 
 	<scm>
-		<connection>scm:git:https://bitbucket.org/anaptecs/jeaf-tools-impl.git</connection>
-		<developerConnection>scm:git:https://bitbucket.org/anaptecs/jeaf-tools-impl.git</developerConnection>
-		<url>https://bitbucket.org/anaptecs/jeaf-tools-impl</url>
+		<connection>scm:git:https://github.com/anaptecs/jeaf-tools-impl.git</connection>
+		<developerConnection>scm:git:https://github.com/anaptecs/jeaf-tools-impl.git</developerConnection>
+		<url>https://github.com/anaptecs/jeaf-tools-impl</url>
 		<tag>HEAD</tag>
 	</scm>
 	
